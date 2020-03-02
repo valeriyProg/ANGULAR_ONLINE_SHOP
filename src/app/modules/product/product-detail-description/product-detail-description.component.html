@@ -1,0 +1,99 @@
+<div class="product-description" *ngIf="description">
+  <div class="product-description-inner row">
+    <!--  TABS NAV LIST  -->
+    <div class="column product-tabs">
+      <ul class="nav-tabs">
+        <!-- TAB -->
+        <li class="tab">
+          <a href="#" [ngClass]="{ 'selected': selectedTabIndex === 0}"
+             (click)="$event.preventDefault();  selectedTabIndex = 0;">Description</a>
+        </li>
+        <!-- TAB -->
+        <li class="tab">
+          <a href="#" [ngClass]="{ 'selected': selectedTabIndex === 1}"
+             (click)="$event.preventDefault(); selectedTabIndex = 1;">Specification</a>
+        </li>
+        <!-- TAB -->
+        <li class="tab">
+          <a href="#" [ngClass]="{ 'selected': selectedTabIndex === 2}"
+             (click)="$event.preventDefault(); selectedTabIndex = 2;">
+            Reviews ({{ description.reviews.length }})
+          </a>
+        </li>
+        <!-- TAB -->
+        <li class="tab">
+          <a href="#" [ngClass]="{ 'selected': selectedTabIndex === 3}"
+             (click)="$event.preventDefault(); selectedTabIndex = 3;">Video</a>
+        </li>
+      </ul>
+    </div>
+    <div class="column right">
+      <!--   TAB CONTENT   -->
+      <div class="tab-content">
+        <!--   TAB CONTENT PANE  DESCRIPTION -->
+        <div class="tab-pane" [ngClass]="{ 'active': selectedTabIndex === 0 }">
+          <p *ngFor="let item of description.description_text" [innerHTML]="item"></p>
+        </div>
+        <!--   TAB CONTENT PANE  SPECIFICATION -->
+        <div class="tab-pane" [ngClass]="{ 'active': selectedTabIndex === 1 }">
+          <table class="table" *ngFor="let item of description.specification_info">
+            <thead>
+              <tr>
+                <td colspan="2"><strong>{{ item.category_title }}</strong></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of item.category_content">
+                <td>{{ row.key }}</td>
+                <td>{{ row.value }}</td>
+             </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--   TAB CONTENT PANE  REVIEW  -->
+        <div class="tab-pane" [ngClass]="{ 'active': selectedTabIndex === 2 }">
+          <!--  REVIEW LIST -->
+          <div class="review-list-wrapper">
+            <div class="review-list" *ngIf="description.reviews.length; else empty_list">
+              <div class="review-item" *ngFor="let item of description.reviews">
+                <p class="reviewer-name">{{ item.name }}</p>
+                <mat-divider></mat-divider>
+                <p class="review-text" [innerHTML]="item.review_text"></p>
+                <p class="rate">Rating: {{ item.rate }}</p>
+              </div>
+            </div>
+            <ng-template #empty_list>
+              <span>There are no reviews for this product.</span>
+            </ng-template>
+            <app-spinner class="spinner" *ngIf="loading"></app-spinner>
+          </div>
+          <!--   WRITE REVIEW FORM   -->
+          <div class="description-form">
+            <div class="show-form">
+              <div class="review-form-title">
+                <h3 class="product-section_title close-tab" id="reviews_form_title" (click)="toggleForm(review_form_wrapper)">Write a review</h3>
+              </div>
+            </div>
+            <div class="form-wrapper" [ngClass]="{ 'hide' : description.reviews.length}" #review_form_wrapper>
+              <form [formGroup]="reviewForm" (submit)="addReview()">
+                <div class="form-inner column">
+                  <label for="name">Write Your Name</label>
+                  <input type="text" matInput [formControlName]="'name'" id="name"  required class="name-input">
+                  <label for="review">Write your review</label>
+                  <textarea type="text" matInput [formControlName]="'review_text'"  id="review" required class="review-text-input"></textarea>
+                  <label for="review">Set your rate:</label>
+                  <input type="text" matInput [formControlName]="'rate'" id="rate"  required class="name-input">
+                  <button type="submit" class="submit-btn">Continue</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--   TAB CONTENT PANE  VIDEO -->
+        <div class="tab-pane" [ngClass]="{ 'active': selectedTabIndex === 3 }">
+          <iframe [src]='getVideoUrl(description.video_link)'  allowfullscreen="" height="315" width="100%"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="add-tools-wrapper">
+  <!--  TAB CONTAINER  -->
+  <mat-tab-group animationDuration="0ms">
+    <!--  TAB: ADD PRODUCT  -->
+    <mat-tab label="Add Product" >
+      <div class="tab-content row">
+        <app-edit-layout class="product-add-layout">
+          <p class="title">Set product info and save to base</p>
+          <!--    ADD PRODUCT COMPONENT    -->
+          <app-product-add ></app-product-add>
+        </app-edit-layout>
+        <!--    PRODUCT LIST TABLE    -->
+        <app-product-list-table class="brand-list product-table table-list"></app-product-list-table>
+      </div>
+    </mat-tab>
+    <!--  TAB: ADD BRAND  -->
+    <mat-tab label="Add Brand">
+      <div class="tab-content row">
+        <app-edit-layout class="add-type-layout brand-add-layout">
+          <p class="title">Set brand and add to base</p>
+          <!--    ADD BRAND COMPONENT    -->
+          <app-brand-add></app-brand-add>
+        </app-edit-layout>
+        <!--    BRAND LIST TABLE    -->
+        <app-brand-list class="brand-list table-list"></app-brand-list>
+      </div>
+    </mat-tab>
+    <!--  TAB: ADD CHOCOLATE TYPE  -->
+    <mat-tab label="Add Chocolate Type">
+      <div class="tab-content row">
+        <app-edit-layout class="add-type-layout chocolate-type-add-layout">
+          <p class="title">Set Chocolate Type and add to base</p>
+          <!--    ADD CHOCOLATE TYPE COMPONENT    -->
+          <app-chocolate-type-add></app-chocolate-type-add>
+        </app-edit-layout>
+        <!--    CHOCOLATE TYPE LIST TABLE    -->
+        <app-chocolate-type-list class="table-list"></app-chocolate-type-list>
+      </div>
+    </mat-tab>
+    <!--  TAB: ADD PACK TYPE  -->
+    <mat-tab label="Add Pack Type">
+      <div class="tab-content row">
+        <app-edit-layout class="add-type-layout pack-type-add-layout">
+          <p class="title">Set Pack Type and save to base</p>
+          <!--    ADD PACK TYPE COMPONENT    -->
+          <app-pack-type-add></app-pack-type-add>
+        </app-edit-layout>
+        <!--    PACK TYPE LIST TABLE    -->
+        <app-pack-type-list class="table-list"></app-pack-type-list>
+      </div>
+    </mat-tab>
+    <!--  TAB: ADD PROMO BANNER   -->
+    <mat-tab label="Add Banner">
+      <div class="tab-content row">
+        <app-edit-layout class="add-type-layout">
+          <p class="title">Set Banner name and save to base</p>
+          <!--    ADD PROMO BANNER COMPONENT    -->
+          <app-promo-add></app-promo-add>
+        </app-edit-layout>
+        <!--    PROMO BANNER LIST TABLE    -->
+        <app-promo-list class="table-list"></app-promo-list>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

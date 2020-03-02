@@ -1,0 +1,21 @@
+.cart-modal-message {
+  display: block;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 10px 0;
+  opacity: 0;
+  color: #ffffff;
+  background: #fd9148;
+  z-index: 2313;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}

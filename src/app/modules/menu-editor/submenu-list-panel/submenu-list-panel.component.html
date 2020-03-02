@@ -1,0 +1,29 @@
+<div class="submenu-editor row" [ngClass]="{ 'submenu-editor-expanded':  menuEditorService.isSubmenuExist }">
+  <!-- SUBMENU GRID PANEL -->
+  <div class="submenu-grid-panel" [ngClass]="{ 'submenu-grid-panel-expanded': menuEditorService.isSubmenuListPanelExpanded ,
+   'submenu-grid-panel-collapsed' : !menuEditorService.isSubmenuListPanelExpanded  }">
+    <!--  GRID PANEL TITLE  -->
+    <div class="header">
+      <h2>Add submenu</h2>
+    </div>
+    <!--  GRID PANEL ITEMS LIST CONTAINER  -->
+    <div class="content row wrap" *ngIf="menuData">
+      <div class="submenu-item" *ngFor="let submenu of menuData[menuEditorService.selectedItemIndex].submenu; index as i">
+        <!--    SUBMENU ITEM    -->
+        <a href="#" class="column " (click)="showSubmenuEditForm($event, i)">
+          <app-list-icon></app-list-icon>
+        </a>
+        <!--    DELETE BUTTON    -->
+        <app-delete-item-btn (click)="menuEditorService.deleteSubmenuElement(i)"></app-delete-item-btn>
+      </div>
+      <!--   SUBMENU ITEM ADD BUTTON   -->
+      <div class="submenu-item">
+        <a href="#" (click)="menuEditorService.addSubmenuItem($event);
+                    showSubmenuEditForm($event, menuData[menuEditorService.selectedItemIndex].submenu.length - 1)">
+          <app-add-item-big-icon></app-add-item-big-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+  <app-menu-item-submenu-editor *ngIf="menuData"></app-menu-item-submenu-editor>
+</div>

@@ -1,0 +1,18 @@
+h3 {
+  font: 400 19px 'Open Sans', sans-serif;
+}
+
+.left, .right {
+  width: 45%;
+}
+.left.column {
+
+  > div {
+    margin-bottom: 30px;
+  }
+}
+
+app-product-item {
+  display: block;
+  margin: auto;
+}

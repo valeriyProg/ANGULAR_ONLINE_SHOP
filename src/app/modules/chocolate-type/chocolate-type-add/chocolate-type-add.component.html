@@ -1,0 +1,20 @@
+<div class="brand-add-wrapper">
+  <div class="add-form">
+    <form [formGroup]="addForm" (ngSubmit)="submit()">
+      <div class="form-inner column">
+        <div class="row">
+          <!--   FORM TEXT INPUT  -->
+          <mat-form-field class="name-field">
+            <label>
+              <input matInput [formControlName]="'name'"  placeholder="Name:">
+            </label>
+          </mat-form-field>
+        </div>
+        <!--    FORM SUBMIT BUTTON   -->
+        <div class="controls-group">
+          <button mat-button type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

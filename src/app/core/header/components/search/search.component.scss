@@ -1,0 +1,36 @@
+.search__inner {
+  color: red;
+}
+
+.search__inner {
+  position: relative;
+  width: 500px;
+}
+
+.search__input_type_search {
+  width: 100%;
+  height: 40px;
+  padding: 0 40px 0 20px;
+
+  background: #fff;
+  border: 0;
+  outline: none;
+  color: #292929;
+  line-height: 18px;
+
+}
+
+.search__submit {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover, &:active, &:focus {
+    color: #fd9148;
+  }
+}

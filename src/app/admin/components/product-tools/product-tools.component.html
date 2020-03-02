@@ -1,0 +1,16 @@
+<section class="product-edit row no-wrap space-between">
+  <div class="left column">
+    <div class="edit">
+      <app-edit-layout>
+        <h2 class="title">Edit Product Component</h2>
+        <app-product-edit (edited)="edited()"></app-product-edit>
+      </app-edit-layout>
+    </div>
+  </div>
+  <div class="right view">
+    <app-preview *ngIf="loadedData" [productId]="loadedData.id">
+      <app-product-item  [product]="loadedData"></app-product-item>
+    </app-preview>
+  </div>
+</section>
+

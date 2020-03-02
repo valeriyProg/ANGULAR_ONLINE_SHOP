@@ -1,0 +1,14 @@
+<ul class="menu-list" >
+  <li class="list-item row" *ngFor="let item of menuData; index as i">
+    <a [ngClass]="{'item-link-selected': i === menuEditorService.selectedItemIndex}"
+       (click)="menuEditorService.showMenuEditForm(i)">{{item.name.title}}</a>
+    <div class="toolbox column">
+      <app-delete-item-btn (click)="menuEditorService.deleteMenuElement(i)"></app-delete-item-btn>
+      <!-- TODO: TO DELETE IN FUTURE
+      <app-edit-item-btn (click)="menuEditorService.showMenuEditForm(i)"></app-edit-item-btn>-->
+    </div>
+  </li>
+  <li class="list-item add-item row">
+    <app-add-item-btn (click)="menuEditorService.addMenuItem($event)"></app-add-item-btn>
+  </li>
+</ul>

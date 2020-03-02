@@ -1,0 +1,43 @@
+<form *ngIf="menuItemForm" [formGroup]="menuItemForm"  id="create-form" class="create-form row" (ngSubmit)="submit()">
+  <div class="menu-item-editor">
+    <h2>Edit Menu item</h2>
+    <!--  EDIT LIST  -->
+    <ul class="config-list">
+      <!--   NAME FORM INPUT   -->
+      <li class="config-list-item">
+        <mat-form-field class="link-name-input">
+          <label>
+            <input matInput [formControlName]="'title'" placeholder="Link Name">
+          </label>
+        </mat-form-field>
+      </li>
+      <!--   NAME LINK FORM INPUT   -->
+      <li class="config-list-item">
+        <mat-form-field class="link-name-input">
+          <label>
+            <input matInput [formControlName]="'link'" placeholder="Link Url">
+          </label>
+        </mat-form-field>
+      </li>
+      <!--   IMG URL FORM INPUT   -->
+      <li class="config-list-item">
+        <mat-form-field class="link-name-input">
+          <label>
+            <input matInput [formControlName]="'icon'" placeholder="Img Url">
+          </label>
+        </mat-form-field>
+      </li>
+      <!--  SUBMENU CHECKBOX FORM INPUT   -->
+      <li class="config-list-item">
+        <label>
+          <mat-checkbox formControlName='submenu' color="primary" (change)="toggleSubmenu()">Submenu</mat-checkbox>
+        </label>
+      </li>
+    </ul>
+    <!--  FORM BUTTONS  -->
+    <div class="buttons row ">
+      <button mat-button  type="submit" class="item-editor-submit-btn" color="primary">Confirm</button>
+      <button mat-button  class="item-editor-submit-btn" color="primary" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</form>

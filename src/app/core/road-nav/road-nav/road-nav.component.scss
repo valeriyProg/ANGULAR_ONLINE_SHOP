@@ -1,0 +1,46 @@
+.title {
+  font: 400 12px 'Raleway',sans-serif;
+  text-transform: lowercase;
+  align-self: center;
+
+  &:first-letter {
+    text-transform: uppercase !important;
+  }
+}
+
+.road-nav {
+  color: #485154;
+  font-size: 12px;
+  line-height: 21px;
+
+  .road-nav-inner {
+    align-items: center;
+  }
+}
+
+.road-nav {
+  margin: 15px 0 40px;
+  padding: 15px 15px;
+  border: 1px solid #e1e1e1;
+  border-radius: 0;
+  background: #fff;
+  font-size: 12px;
+  line-height: 21px;
+  color: #485154;
+
+  .fa {
+    display: block !important;
+  }
+}
+
+.home-link {
+  display: block;
+  text-decoration: none;
+  margin: 0 10px;
+
+  &:hover {
+    i {
+      color: #fd9148;
+    }
+  }
+}

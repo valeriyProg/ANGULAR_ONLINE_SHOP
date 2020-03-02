@@ -1,0 +1,96 @@
+<div class="product-add-wrapper">
+  <div class="edit-form" *ngIf="addForm">
+    <!--  PRODUCT ADD FORM  -->
+    <form [formGroup]="addForm" (ngSubmit)="submit()">
+      <div class="form-inner column">
+        <!--    SCREEN UPLOADER    -->
+        <app-screen-uploader [value]="screen" (selectImage)="selectedImage($event)"></app-screen-uploader>
+        <div class="row">
+          <!--   FORM TEXT INPUT: NAME       -->
+          <mat-form-field class="name-field">
+            <label>
+              <input matInput [formControlName]="'name'"  placeholder="Name:">
+            </label>
+          </mat-form-field>
+          <!--   FORM INPUT SELECT: PACK TYPE       -->
+          <mat-form-field   *ngIf="packType | async as packs">
+            <div class="row">
+              <label class="brand-label">Pack:</label>
+              <mat-select [formControlName]="'packType_id'">
+                <mat-option *ngFor="let pack of packs" [value]="pack.id">
+                  {{pack.name}}
+                </mat-option>
+              </mat-select>
+            </div>
+          </mat-form-field>
+        </div>
+        <div class="category-group row" >
+          <!--   FORM INPUT SELECT: BRANDS       -->
+          <mat-form-field class="link-name-input" *ngIf="brands | async as brands">
+            <div class="row">
+              <label class="brand-label">Brand:</label>
+              <mat-select [formControlName]="'brand_id'">
+                <mat-option *ngFor="let brand of brands" [value]="brand.id">
+                  {{brand.name}}
+                </mat-option>
+              </mat-select>
+            </div>
+          </mat-form-field>
+          <!--   FORM INPUT SELECT: CHOCOLATE TYPES    -->
+          <mat-form-field class="link-name-input" *ngIf="chocolateType | async as chocolateType">
+            <div class="row">
+              <label class="brand-label">Type:</label>
+              <mat-select [formControlName]="'chocolateType_id'">
+                <mat-option *ngFor="let type of chocolateType" [value]="type.id">
+                  {{type.name}}
+                </mat-option>
+              </mat-select>
+            </div>
+          </mat-form-field>
+        </div>
+        <div class="parameter-group row">
+          <!--   FORM TEXT INPUT: PRICE       -->
+          <div class="price column">
+            <mat-form-field class="price-field">
+              <label>
+                <input matInput [formControlName]="'price'" type="number"  placeholder="Price:">
+              </label>
+            </mat-form-field>
+            <mat-form-field class="price-field">
+              <label>
+                <input matInput [formControlName]="'old_price'"  type="number"  placeholder="Old Price:">
+              </label>
+            </mat-form-field>
+          </div>
+          <!--   FORM TEXT INPUT: WEIGHT       -->
+          <mat-form-field class="weight-field">
+            <label>
+              <input matInput [formControlName]="'weight'" placeholder="Weight:">
+            </label>
+          </mat-form-field>
+          <!--   FORM INPUT SELECT: PROMO TYPES    -->
+          <mat-form-field class="link-name-input" *ngIf="promoList | async as promoItems">
+            <div class="row">
+              <label class="brand-label">Promo:</label>
+              <mat-select [formControlName]="'promo_id'">
+                <mat-option *ngFor="let promo of promoItems" [value]="promo.id">
+                  {{promo.name}}
+                </mat-option>
+              </mat-select>
+            </div>
+          </mat-form-field>
+        </div>
+        <!--    DESCRIPTION    -->
+        <mat-form-field class="description-field" appearance="fill">
+          <mat-label>Description:</mat-label>
+          <textarea matInput [formControlName]="'description'"></textarea>
+        </mat-form-field>
+        <!--    FORM SUBMIT BUTTOn    -->
+        <div class="controls-group">
+          <button mat-button type="submit">Add Product</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

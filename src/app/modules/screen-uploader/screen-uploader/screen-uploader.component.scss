@@ -1,0 +1,33 @@
+.screen-group {
+  position: relative;
+  padding: 10px 0 30px;
+  overflow: hidden;
+}
+
+.item-screen {
+  display: block;
+  margin-left: auto;
+  width: 170px;
+  min-height: 50px;
+}
+
+.file-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+
+  p {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+}
+
+.file-input {
+  position: absolute;
+  top: 25px;
+  left: -103px;
+  cursor: pointer;
+  outline: none;
+}
+

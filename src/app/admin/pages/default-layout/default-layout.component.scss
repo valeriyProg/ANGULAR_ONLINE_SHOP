@@ -1,0 +1,53 @@
+.top-bar {
+  position: fixed;
+  width: 100%;
+  z-index: 999999999;
+  top: 0;
+}
+
+.left-sidebar {
+  width: 200px;
+  position: fixed;
+  overflow: hidden;
+  top: 63px;
+  z-index: 10;
+  height: 100%;
+  background: #2b3c4e;
+  transition: all 0.6s ease-in-out 0ms;
+}
+
+.left-sidebar-collapsed {
+  width: 33px !important;
+}
+
+main {
+  font: 14px/16px Roboto,sans-serif;
+  color: #666;
+  background-color: #eeeeef;
+}
+
+.content {
+  width: 100%;
+  padding-top: 63px;
+  padding-left: 0;
+  transition: all 0.6s ease-in-out 0ms;
+}
+
+.content-default-size {
+  padding-left: 200px;
+}
+
+.content-expanded {
+  padding-left: 33px;
+}
+
+.content-inner {
+  padding: 30px;
+  min-height: 100vh;
+}
+
+footer {
+  width: 100%;
+  padding: 15px 15px;
+  background: #666666;
+}

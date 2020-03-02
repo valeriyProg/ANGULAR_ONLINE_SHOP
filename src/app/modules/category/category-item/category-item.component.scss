@@ -1,0 +1,44 @@
+.category-item {
+  background: #fff;
+  border: 1px solid #e1e1e1;
+}
+
+.screen {
+  border-bottom: 1px solid #e1e1e1;
+  cursor: pointer;
+
+  a {
+    display: block;
+    width: 100%;
+    padding: 15px 11px;
+
+    img {
+      display: block;
+      width: 148px;
+    }
+
+    &:hover {
+      img {
+        opacity: .7;
+      }
+    }
+  }
+}
+
+.description {
+  padding: 10px 5px;
+
+  a {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s all ease;
+    color: #485154;
+    font-size: 14px;
+
+    &:hover {
+      color: #fd9148;
+    }
+  }
+}

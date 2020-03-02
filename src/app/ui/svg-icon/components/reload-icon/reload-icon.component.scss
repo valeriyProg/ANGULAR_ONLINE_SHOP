@@ -1,0 +1,11 @@
+svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  &:hover, &:active {
+    path {
+      fill: #f0f3f4;
+    }
+  }
+}

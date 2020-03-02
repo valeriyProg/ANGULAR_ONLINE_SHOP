@@ -1,0 +1,14 @@
+<app-admin-header class="top-bar"></app-admin-header>
+<main class="container-full-width row">
+  <!--  ASIDE BAR  -->
+  <app-aside-bar class="left-sidebar" [ngClass]="{'left-sidebar-collapsed': this.asideBarService.collapseMenu}">
+  </app-aside-bar>
+  <!--  CONTENT BLOCK  -->
+  <div class="content" [ngClass]="{'content-expanded': this.asideBarService.collapseMenu,
+                                    'content-default-size': !this.asideBarService.collapseMenu}">
+    <div class="content-inner">
+      <router-outlet></router-outlet>
+    </div>
+    <footer>FOOTER</footer>
+  </div>
+</main>

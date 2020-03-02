@@ -1,0 +1,196 @@
+.list-filter {
+  background: #fff;
+  margin: 17px 0 30px;
+  border: 1px solid #e1e1e1;
+
+  font: 400 14px/21px "Raleway", sans-serif;
+  color: #485154;
+}
+
+.view-btn-wrapper {
+  height: 100%;
+
+  .view-btn {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      border-right:1px solid #e1e1e1;
+    }
+
+    &:hover {
+        fill: #fd9148;
+    }
+
+    svg {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px;
+      height: 20px;
+    }
+
+    svg.grid-svg {
+      top: 57%;
+    }
+  }
+}
+.selected-view {
+  fill: #fd9148;
+}
+
+.filter-elem {
+  position: relative;
+
+  label, select {
+    position: absolute;
+  }
+
+  select {
+    display: none;
+  }
+}
+
+.filter-elem:last-child {
+  margin-left: auto;
+}
+
+.filter-list-elem {
+  width: 33%;
+  border-left:1px solid #e1e1e1;
+  border-right:1px solid #e1e1e1;
+}
+
+.filter-list-wrapper{
+
+  .filter-list-inner {
+    height: 50px;
+    transition: all .3s ease-in-out;
+
+    a {
+      font-family: inherit;
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        cursor: pointer;
+        background: #eee;
+      }
+    }
+
+    .filter-title {
+      text-align: left;
+      padding: 14.5px 10px;
+      width: 87%;
+    }
+  }
+
+  label {
+    display: none;
+  }
+}
+
+.list {
+  max-height: 0;
+  opacity: 0;
+  position: absolute;
+  overflow: hidden;
+  margin: 2px 0;
+  z-index: 22;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  border:1px solid #e1e1e1;
+  padding: 10px 0;
+  list-style: none;
+  background: #fff;
+  transition: max-height .5s ease-in-out;
+
+  a {
+    display: block;
+    width: 100%;
+    padding: 8px 15px;
+    font-family: inherit;
+    text-decoration: none;
+    color: #485154;
+
+    &:hover {
+      cursor: pointer;
+      background: #eee;
+    }
+  }
+}
+
+.displayed {
+  max-height: 9999px !important;
+  opacity: 1 !important;
+}
+
+.filter-btn {
+  height: 100%;
+  border-left:1px solid #e1e1e1;
+  background: #eee;
+  position: relative;
+  width: 50px;
+
+  .list-control {
+    overflow: hidden;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    height: 8px;
+    width: 15px;
+    transform: translate(-50%,-50%);
+  }
+
+  i {
+    display: block;
+    position: absolute;
+    left: 3px;
+    top: -8px;
+    height: 13px;
+    width: 8px;
+    background: #000000;
+    transform: rotate(-45deg) ;
+  }
+}
+
+.show-label {
+  top: 50%;
+  left: -45px;
+  transform: translateY(-50%);
+}
+
+.filter-select {
+  display: none;
+}
+
+.count-page {
+  height: 100%;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background: #eee;
+  }
+
+  a {
+    display: block;
+    height: 100%;
+    padding: 14.5px 10px;
+    text-decoration: none;
+    border-left: 1px solid #e1e1e1;
+
+    &:first-child {
+      width: 69px;
+    }
+  }
+
+}

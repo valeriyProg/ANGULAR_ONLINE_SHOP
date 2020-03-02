@@ -1,0 +1,40 @@
+.product-item {
+  margin-bottom: 40px;
+
+  &:not(:nth-child(4n)) {
+    margin-right: 40px;
+  }
+}
+.product-list {
+  min-height:  270px;
+}
+
+.product-list.column {
+  justify-content: flex-start;
+}
+
+.spinner-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  opacity: .8;
+  left: 0;
+  top: 0;
+  z-index: 223;
+}
+
+.content {
+  position: relative;
+  min-height:  270px;
+}
+
+.spinner-inner {
+  width: 100%;
+  height: 100%;
+}
+
+app-spinner {
+  display: block;
+  height: 100%;
+}

@@ -1,0 +1,42 @@
+<div class="banner" *ngIf="data">
+  <div class="banner-inner">
+    <!--  BANNER IMG  -->
+    <div class="banner-img">
+      <img [src]="data.screen" alt="banner img">
+    </div>
+    <!--  BANNER CONTENT  -->
+    <div class="banner-content" [ngClass]="{ 'top': data.type === bannerTypeEnum.Deal,
+                                              'middle': data.type === bannerTypeEnum.ShopBy,
+                                              'bottom': data.type === bannerTypeEnum.New }">
+      <!--   DESCRIPTION  -->
+      <div class="banner-description">
+        <!--     NEW BANNER   -->
+        <div *ngIf="data.type === bannerTypeEnum.New" class="new-banner">
+          <h2>{{ data.title }}</h2>
+          <h4>
+            <span>New!</span>
+            {{ data.description_title }}
+          </h4>
+          <p> {{ data.description_content }} </p>
+        </div>
+        <!--     DEAL BANNER   -->
+        <div *ngIf="data.type === bannerTypeEnum.Deal" class="deal-banner">
+          <h4>{{ data.title }}</h4>
+          <h3>
+            {{ data.description_title }}
+          </h3>
+          <p *ngIf="data.note">
+            {{ data.note }}
+          </p>
+        </div>
+        <!--     BANNER   -->
+        <div *ngIf="data.type === bannerTypeEnum.ShopBy" class="banner">
+          <h2>{{ data.title }}</h2>
+        </div>
+        <a href="" class="banner-btn">Shop Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+

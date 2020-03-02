@@ -1,0 +1,81 @@
+<div class="list-filter">
+  <div class="row no-wrap list-filter-inner">
+    <!--    VIEW MODE BUTTON BLOCK-->
+    <div class="filter-elem">
+      <div class="row no-wrap view-btn-wrapper">
+      <!--     COLUMN-MODE BUTTON    -->
+        <button class="view-btn" (click)="listService.listView = listService.displayMode.COLUMN"
+                [ngClass]="{ 'selected-view': listService.listView === listService.displayMode.COLUMN }">
+          <svg height="20px" viewBox="0 -52 512 512" width="20px" style="" xmlns="http://www.w3.org/2000/svg">
+            <path d="m0 0h113.292969v113.292969h-113.292969zm0 0"/>
+            <path d="m149.296875 0h362.703125v113.292969h-362.703125zm0 0"/>
+            <path d="m0 147.007812h113.292969v113.292969h-113.292969zm0 0"/>
+            <path d="m149.296875 147.007812h362.703125v113.292969h-362.703125zm0 0"/>
+            <path d="m0 294.011719h113.292969v113.296875h-113.292969zm0 0"/>
+            <path d="m149.296875 294.011719h362.703125v113.296875h-362.703125zm0 0"/>
+          </svg>
+        </button>
+        <!--     ROW-MODE BUTTON    -->
+        <button class="view-btn" (click)="listService.listView = listService.displayMode.ROW"
+                [ngClass]="{ 'selected-view': listService.listView === listService.displayMode.ROW }">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 341.333 341.333"  xml:space="preserve" class="grid-svg">
+	        	<g>
+              <rect x="128" y="128" width="85.333" height="85.333"/>
+              <rect x="0" y="0" width="85.333" height="85.333"/>
+              <rect x="0" y="128" width="85.333" height="85.333"/>
+              <rect x="256" y="0" width="85.333" height="85.333"/>
+              <rect x="128" y="0" width="85.333" height="85.333"/>
+              <rect x="256" y="128" width="85.333" height="85.333"/>
+		        </g>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!--    FILTER NAV-LIST BLOCK   -->
+    <div class="filter-elem filter-list-elem">
+      <div class="filter-list-wrapper">
+        <label for="filter"></label>
+        <!--     SELECTED FILTER   -->
+        <div class="filter-list-inner row space-between">
+          <a href="#" class="filter-title" (click)="$event.preventDefault(); listService.isFilterListShow = true">
+            {{ listService.selectedFilter.name }}
+          </a>
+          <a href="#" (click)="$event.preventDefault()" class="filter-btn"><div class="list-control"><i></i></div></a>
+        </div>
+        <!--    FILTER SUBMENU    -->
+        <ul class="list" [ngClass]=" { 'displayed' : listService.isFilterListShow }">
+          <li *ngFor="let item of listService.sortNav">
+            <a href="#" (click)="listService.selectFilter($event, item)">
+              {{ item.name }}
+            </a>
+          </li>
+        </ul>
+        <select name="filter" id="filter">
+          <option *ngFor="let item of listService.sortNav" [value]="item.query_params">{{ item.name }}</option>
+        </select>
+      </div>
+    </div>
+    <!--   COUNT PAGE TO DISPLAY BLOCK-->
+    <div class="filter-elem">
+      <label for="count-page" class="show-label">Show:</label>
+      <!--    SELECTED COUNT PAGE   -->
+      <div class="count-page row">
+        <a href="#" class="count-page-link" (click)="$event.preventDefault(); listService.isCountPageListShow = true">
+          {{ listService.itemsCountToShow[listService.selectedCountIndex] }}
+        </a>
+        <a href="#" class="filter-btn" (click)="$event.preventDefault(); listService.isCountPageListShow = true">
+          <div class="list-control"><i></i></div></a>
+      </div>
+      <!--    COUNT PAGE LIST-->
+      <ul class="count-items-list list"  [ngClass]=" { 'displayed' : listService.isCountPageListShow }">
+        <li *ngFor="let item of listService.itemsCountToShow; index as i">
+          <a href="#" (click)="listService.selectCountPageFilter($event, i)"> {{ item }} </a>
+        </li>
+      </ul>
+      <select name="filter-select" id="count-page">
+        <option *ngFor="let item of listService.itemsCountToShow; index as i" [value]="i">{{ item }}</option>
+      </select>
+    </div>
+  </div>
+</div>

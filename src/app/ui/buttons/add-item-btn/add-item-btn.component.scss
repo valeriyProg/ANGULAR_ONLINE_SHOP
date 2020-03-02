@@ -1,0 +1,20 @@
+.add-btn {
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  background: transparent;
+  border: transparent;
+  outline: none;
+  svg {
+    width: 15px;
+    height: 20px;
+    opacity: 0.7;
+    fill: #62506d;
+  }
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+    fill: #e8e8e8;
+  }
+}

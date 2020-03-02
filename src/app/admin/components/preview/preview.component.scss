@@ -1,0 +1,44 @@
+.preview {
+  background: #fcf9f7;
+}
+
+.preview-header {
+  padding: 5px 20px;
+  background: #24292e;
+  color: #ffffff;
+
+  h2 {
+    margin: 5px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  button {
+    display: block;
+    padding: 0;
+    margin-left: 10px;
+    width: 24px;
+    height: 24px;
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+.content {
+  min-height: 300px;
+  padding: 20px;
+  overflow: auto;
+  transition: all .6s ease-in-out;
+}
+
+.preview-footer {
+  padding: 5px;
+  background: #24292e;
+  color: #ffffff;
+
+  p  {
+    margin: 0;
+  }
+}

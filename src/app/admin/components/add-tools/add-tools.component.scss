@@ -1,0 +1,56 @@
+.add-tools-wrapper {
+  padding: 20px 0;
+}
+
+.tab-content {
+  background: #e8e8e8;
+  padding: 10px 10px;
+}
+
+mat-tab-group {
+  transition: all .7s ease-in-out;
+}
+
+.product-add-layout {
+  display: block;
+  width: 500px;
+  margin-right: 48px;
+}
+
+.brand-add-layout {
+  display: block;
+  max-width: 400px;
+  margin-right: 48px;
+}
+
+.brand-list, .table-list{
+  min-height:  220px;
+}
+
+.product-table {
+  min-width: 550px;
+}
+
+.chocolate-type-add-layout {
+  display: block;
+  max-width: 400px;
+  margin-right: 48px;
+}
+
+.add-type-layout {
+  display: block;
+  max-width: 400px;
+  margin-right: 48px;
+}
+
+.pack-type-add-layout {
+  display: block;
+  max-width: 400px;
+  margin-right: 48px;
+}
+
+.banner-add-layout {
+  display: block;
+  max-width: 400px;
+  margin-right: 100px;
+}

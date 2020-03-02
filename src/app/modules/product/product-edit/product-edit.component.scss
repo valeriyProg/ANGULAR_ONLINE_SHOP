@@ -1,0 +1,24 @@
+
+.brand-label {
+  margin-right: 7px;
+}
+
+.weight-field, .price-field {
+  max-width: 70px;
+}
+
+.row {
+  justify-content: space-between;
+}
+
+.controls-group {
+  button {
+    margin-left: auto;
+    display: block;
+  }
+}
+
+.description-field {
+  width: 100%;
+  display: block;
+}

@@ -1,0 +1,82 @@
+<div class="product-detail" *ngIf="product | async as item">
+  <!-- ROAD NAV -->
+  <div class="row">
+    <div class="container">
+      <app-road-nav [selectedCategoryTitle]="item.name.title"></app-road-nav>
+    </div>
+  </div>
+  <div class="row  space-between item-info">
+    <!--  IMG LIST  -->
+    <div class="screen-list">
+      <app-image-list [images]="item.screen_list.length ? item.screen_list : [item.screen]" (selectedImage)="main_screen.src = $event; selectedImage($event)"></app-image-list>
+    </div>
+    <!--  MAIN SCREEN -->
+    <div class="main-img">
+      <img [src]="item.screen_big | serverImage" alt="img" #main_screen>
+    </div>
+    <!--  ITEM INFO BLOCK  -->
+    <div class="info">
+      <div class="info-inner">
+        <!--   PRODUCT TITLE   -->
+        <div class="title">
+          <h2>{{ item.name.title }}</h2>
+        </div>
+        <ul>
+          <!--   PRODUCT BRAND   -->
+          <li class="brand" *ngIf="item.brand | async as brand">
+            <span>Brand: {{ brand.name }}</span>
+          </li>
+          <!--   PRODUCT CHOCOLATE TYPE   -->
+          <li class="chocolate-type" *ngIf="item.chocolateType | async as chocolateType">
+            <span>Chocolate type: {{ chocolateType.name }}</span>
+          </li>
+        </ul>
+        <!--   PRODUCT PRICE   -->
+        <div class="price">
+          <span>&pound;{{ item.price | productPrice }}</span>
+        </div>
+        <!--   PRODUCT FORM     -->
+        <div class="form-wrapper">
+          <form action="" [formGroup]="addToCartForm">
+            <h3>AVAILABLE OPTIONS</h3>
+            <p>Size</p>
+            <div class="size-wrapper">
+              <mat-radio-group aria-label="Select an option" color="primary" class="column" (change)="selectedPackSize = $event.value" #radio>
+                <mat-radio-button [value]="packSize.SMALL" checked>SMALL</mat-radio-button>
+                <mat-radio-button [value]="packSize.MEDIUM">MEDIUM</mat-radio-button>
+                <mat-radio-button [value]="packSize.LARGE">LARGE</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="row space-between">
+              <div class="left">
+                <button class="add-to-cart-button" (click)="cartService.addItem(item.id, selectedPackSize, this.quantity)">Add to cart</button>
+              </div>
+              <div class="right row">
+                <label for="input-quantity">Qty</label>
+                <a href="#" (click)="$event.preventDefault(); decrease()">
+                  <i class="fa fa-minus"></i>
+                </a>
+                <input matInput  [formControlName]="'quantity'"  type="text" id="input-quantity">
+                <a href="#" (click)="$event.preventDefault(); increase()">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <mat-divider class="divider"></mat-divider>
+        <div class="review-links-wrap column">
+          <a href="#" class="link" *ngIf="item.content | async as content" (click)="$event.preventDefault();">{{ content.reviews.length }} reviews</a>
+          <a href="#" class="link" (click)="$event.preventDefault();">Write review</a>
+        </div>
+        <mat-divider class="divider"></mat-divider>
+      </div>
+    </div>
+  </div>
+  <!-- DESCRIPTION BLOCK -->
+  <div class="row description-block">
+    <div class="container">
+      <app-product-detail-description [descriptionObservable]="item.content"></app-product-detail-description>
+    </div>
+  </div>
+</div>

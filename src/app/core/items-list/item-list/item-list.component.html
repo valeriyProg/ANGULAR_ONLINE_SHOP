@@ -1,0 +1,19 @@
+<div class="item-list" *ngIf="data">
+<!--  FILTER -->
+<div class="filter-wrapper">
+  <app-list-filter></app-list-filter>
+</div>
+<div class="content">
+  <!--  PRODUCT LIST-->
+  <div class="container wrap product-list"
+       [ngClass]="{ 'row': itemListService.listView === displayMode.ROW, 'column': itemListService.listView === displayMode.COLUMN }">
+    <app-product-item  [size]="sizeMode.BIG" *ngFor="let item of data" [product]="item" class="product-item"></app-product-item>
+  </div>
+  <!-- LOAD SPINNER  -->
+  <div class="container wrap spinner-container" *ngIf="isDataLoading">
+    <div class="spinner-inner">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+</div>
+</div>

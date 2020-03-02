@@ -1,0 +1,20 @@
+<div class="image-list">
+  <div  class="scroll-control scroll-prev" (click)="prev()">
+    <div class="scroll-inner">
+      <i class="fa fa-chevron-up"></i>
+    </div>
+  </div>
+  <ul *ngIf="images" [ngClass]="{ 'row' : displayMode.ROW, 'column' : displayMode.COLUMN }" #list>
+    <li *ngFor="let item of images; index as i">
+      <a [href]="item | serverImage" [ngClass]="{ 'selected' : i === selectedItemIndex }"
+         (click)="$event.preventDefault(); selectedItemIndex = i; selectedImage.emit(link.href);" #link>
+        <img [src]="item | serverImage" alt="screen-item">
+      </a>
+    </li>
+  </ul>
+  <div class="scroll-control scroll-next" (click)="next()">
+    <div class="scroll-inner">
+      <i class="fa fa-chevron-down"></i>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,131 @@
+.banner-inner {
+  background: #292929;
+  position: relative;
+
+  &:hover {
+    .banner-img {
+      opacity: .7;
+    }
+  }
+}
+
+.banner-img {
+  opacity: .5;
+  transition: all .6s ease;
+}
+
+.banner-content {
+  width: 100%;
+  padding: 0 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+  color: #fff;
+
+  h2 {
+    font: 300 36px 'Raleway', sans-serif;
+    line-height: 36px;
+    margin: 0 0 15px;
+    letter-spacing: -1px;
+    color: #fff;
+    text-transform: none;
+    opacity: .9;
+  }
+}
+
+.top {
+  top: 50px;
+}
+
+.bottom {
+  bottom: 50px;
+}
+
+.middle {
+  top: 50%;
+  transform: translateY(-35%);
+  left: 0;
+}
+
+.new-banner {
+  text-transform: uppercase;
+
+  h2 {
+    font-weight: 100 !important;
+  }
+
+  h4 {
+    font: 500 14px 'Raleway', sans-serif;
+    color: #fff;
+    line-height: 18px;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+
+    span {
+      color: #fd9148;
+    }
+  }
+
+  p {
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}
+
+.deal-banner {
+  text-transform: uppercase;;
+
+  h4 {
+    margin: 0 0 9px;
+    color: #fff;
+    font: 600 14px 'Relaway', sans-serif;
+    line-height: 18px;
+    padding: 0;
+    letter-spacing: 0;
+  }
+
+  h3 {
+    color: #fff;
+    position: relative;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 900;
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    text-transform: none;
+    margin: 10px 0 0;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.banner-btn {
+  display: inline-block;
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  padding: 5px 29px;
+  font: 600 12px 'Raleway', sans-serif;
+  line-height: 25px;
+  color: #fff;
+  transition: all 0.4s ease;
+  border-radius: 18px;
+  background: #fd9148;
+  letter-spacing: 1.4px;
+  text-decoration: none;
+  outline: none;
+
+  &:hover {
+    color: #fff;
+    background: #292929;
+  }
+}

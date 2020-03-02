@@ -1,0 +1,42 @@
+<div *ngIf="menuData" class="submenu-item-editor" [ngClass]="{ 'submenu-item-editor-expanded':this.menuEditorService.isSubmenuItemEditFormExpanded }">
+  <h2>Edit Submenu</h2>
+  <!-- SUBMENU EDIT FORM -->
+  <form [formGroup]="submenuForm" id="create-submenu-form" class="create-form" (ngSubmit)="submit()">
+    <!--  SUBMENU ITEM TITLE NAME -->
+    <div class="submenu-item submenu-title">
+      <mat-form-field class="link-name-input">
+        <label>
+          <input matInput [formControlName]="'title'" placeholder="Submenu Title Name">
+        </label>
+      </mat-form-field>
+    </div>
+    <!--  SUBMENU LIST -->
+    <ul class="submenu-list" [formArrayName]="'submenu'" *ngIf="submenu.controls.length > 0">
+      <li class="submenu-item row"  *ngFor="let control of submenu.controls; index as i">
+        <!--    SUBMENU ITEM NAME    -->
+        <mat-form-field class="link-name-input" *ngIf="(i%2) === 0">
+          <label>
+            <input matInput [formControlName]="i" placeholder="Submenu item name">
+          </label>
+        </mat-form-field>
+        <!--    SUBMENU ITEM LINK    -->
+        <mat-form-field class="link-name-input" *ngIf="i%2 > 0">
+          <label>
+            <input matInput [formControlName]="i" placeholder="Item Link">
+          </label>
+        </mat-form-field>
+        <!--    SUBMENU ITEM DELETE BUTTON    -->
+        <app-delete-item-btn class="delete-field-btn" (click)="deleteSubmenuElement(i)" ></app-delete-item-btn>
+      </li>
+    </ul>
+    <!--  ADD SUBMENU ITEM BTN  -->
+    <div class="add-list-element">
+      <app-add-item-btn (click)="addSubmenuElement($event)"></app-add-item-btn>
+    </div>
+    <!--  FORM SUBMIT|CANCEL BUTTONS  -->
+    <div class="confirmation-controls-item row">
+      <button mat-button type="submit" class="item-editor-submit-btn" color="primary">Ok</button>
+      <button mat-button type="reset" class="item-editor-submit-btn" color="primary" (click)="cancel($event)">Cancel</button>
+    </div>
+  </form>
+</div>

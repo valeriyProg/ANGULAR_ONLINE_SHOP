@@ -1,0 +1,55 @@
+<div class="product-item"  [id]="product.id" [ngClass]="{ 'small-item': size === sizeMode.SMALL, 'big-item': size === sizeMode.BIG }">
+  <!-- PRODUCT SCREEN -->
+  <div class="screen">
+    <a [routerLink]="['/shop/product/', product.id]" routerLinkActive="$router_link-active$"
+       [ngClass]="{ 'screen-link': size === sizeMode.SMALL,'screen-link-big': size === sizeMode.BIG }">
+      <img *ngIf="loaded; else spinner" [src]="size === sizeMode.SMALL ? (product.screen | serverImage) : (product.screen_big | serverImage)"
+           alt="screen" class="item-img">
+      <!--   PRODUCT PROMO    -->
+      <div *ngIf="product.promo | async as promo" [ngClass]="{ 'sale-banner': promo.value === promoEnum.Sale,
+                                                               'new-banner': promo.value === promoEnum.New,
+                                                               'exclusive-banner': promo.value === promoEnum.Exclusive,
+                                                               'hot-banner':  promo.value === promoEnum.Hot }">
+      </div>
+      <!--   SPINNER -->
+      <ng-template #spinner>
+        <img [src]="'product/product-spinner.gif' | serverImage" alt="" class="spinner">
+      </ng-template>
+    </a>
+  </div>
+  <!--  PRODUCT NAME  -->
+  <div class="product-name">
+    <a [href]="product.name.link" class="product-name-link">
+     {{ product.name.title }}
+    </a>
+  </div>
+  <!--  PRODUCT DESCRIPTION  -->
+  <div class="product-description" *ngIf="product.description">
+    <span>{{ product.description }}</span>
+  </div>
+  <!--  PRODUCT PRICE  -->
+  <div class="price row no-wrap">
+    <span class="old-price" *ngIf="product.old_price">&pound;{{ +product.old_price | productPrice }}</span>
+    <span class="current-price">&pound;{{ +product.price | productPrice }}</span>
+    <button class="add-to-cart-btn" (click)="isModalHide = false">
+      <i class="fa fa-cart-plus"></i>
+    </button>
+    <div class="modal-window" [ngClass]="{ 'hidden' : isModalHide }" #modal>
+      <div class="modal-window-inner">
+        <app-delete-item-btn class="close-btn" (click)="isModalHide = true"></app-delete-item-btn>
+        <span>Available options</span>
+        <p>Size</p>
+        <div class="size-wrapper">
+          <mat-radio-group aria-label="Select an option" color="primary" class="column" (change)="selectedPack = $event.value" #radio>
+            <mat-radio-button [value]="packSize.SMALL">SMALL</mat-radio-button>
+            <mat-radio-button [value]="packSize.MEDIUM">MEDIUM</mat-radio-button>
+            <mat-radio-button [value]="packSize.LARGE">LARGE</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <button class="add-to-cart-button" [disabled]="selectedPack === undefined" (click)="cartService.addItem(product.id, selectedPack); isModalHide = true">Add to cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

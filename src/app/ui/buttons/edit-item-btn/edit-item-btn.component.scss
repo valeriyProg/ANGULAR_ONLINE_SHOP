@@ -1,0 +1,19 @@
+.btn {
+  width: 27px;
+  height: 18px;
+  outline: none;
+  border: none;
+  margin: 0 auto;
+  cursor: pointer;
+  background: transparent;
+}
+.edit-btn {
+  svg {
+    fill: #666666;
+  }
+  &:hover {
+    svg {
+      fill: #000000;
+    }
+  }
+}

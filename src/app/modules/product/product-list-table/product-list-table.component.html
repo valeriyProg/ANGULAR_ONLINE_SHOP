@@ -1,0 +1,66 @@
+<div class="list" >
+  <div class="mat-elevation-z8" >
+    <!--   TABLE FILTER -->
+    <mat-form-field class="filter">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Product Name">
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" *ngIf="dataSource">
+      <!--   TABLE COLUMN: ID   -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID: </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+      <!--   TABLE COLUMN: BRAND   -->
+      <ng-container matColumnDef="brand" >
+        <th mat-header-cell *matHeaderCellDef> Brand </th>
+        <td mat-cell *matCellDef="let element; ">
+          <span *ngIf="element.brand | async as brand">{{ brand.name }}</span>
+      </ng-container>
+      <!--   TABLE COLUMN: NAME   -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element">
+          <a [href]="element.name.link" class="name-link">{{ element.name.title }}</a>
+        </td>
+      </ng-container>
+      <!--   TABLE COLUMN: PRICE   -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+      <!--   TABLE COLUMN: WEIGHT  -->
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef> Weight </th>
+        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      </ng-container>
+      <!--   TABLE COLUMN: PROMO   -->
+      <ng-container matColumnDef="promo">
+        <th mat-header-cell *matHeaderCellDef> Promo </th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.promo | async as promo">{{ promo.name }}</span>
+        </td>
+      </ng-container>
+      <!--   TABLE COLUMN: EDIT   -->
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <app-edit-item-btn class="delete-btn " (click)="deleteItem(element.id)"></app-edit-item-btn>
+        </td>
+      </ng-container>
+      <!--   TABLE COLUMN: DELETE    -->
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <app-delete-item-btn class="delete-btn " (click)="deleteItem(element.id)"></app-delete-item-btn>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 15, 25]" [length]="productList.length" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>

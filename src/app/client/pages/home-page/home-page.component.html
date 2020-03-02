@@ -1,0 +1,34 @@
+<div class="shop-content-header">
+  <div class="container">
+    <section class="top-banners row no-wrap space-between" *ngIf="newBannerList">
+      <app-banner-item *ngFor="let item of newBannerList" [data]="item" class="banner-item"></app-banner-item>
+    </section>
+    <section class="row no-wrap space-between" >
+      <div class="left">
+        <div class="banner-wrapper">
+          <app-banner-item *ngIf="dealBannerList" [data]="dealBannerList[0]" class="banner-item"></app-banner-item>
+        </div>
+      </div>
+      <div class="right">
+        <app-product-list [type]="{ chocolateType_id: chocolateTypeEnum.Milk }" [count]="8" class="product-list">
+          <h3 class="title">Chocolate & Baked Goods</h3>
+        </app-product-list>
+      </div>
+    </section>
+    <section class="row no-wrap space-between" *ngIf="shopByBannerList">
+      <app-banner-item *ngFor="let item of shopByBannerList" [data]="item" class="banner-item"></app-banner-item>
+    </section>
+    <section class="row no-wrap space-between" >
+      <div class="left">
+        <app-product-list [type]="{ packType_id: packTypeEnum.Box }" [count]="8" class="product-list">
+          <h3 class="title">Box Collection</h3>
+        </app-product-list>
+      </div>
+      <div class="right">
+        <div class="banner-wrapper" *ngIf="dealBannerList">
+          <app-banner-item [data]="dealBannerList[1]" class="banner-item"></app-banner-item>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

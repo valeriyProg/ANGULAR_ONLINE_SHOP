@@ -1,0 +1,127 @@
+.product-list {
+  overflow: hidden;
+}
+.filter-nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    &:not(:last-child) {
+      margin-right: 25px;
+    }
+
+    a {
+      font: 500 16px 'Raleway', sans-serif;
+      line-height: 24px;
+      margin: 0;
+      color: #292929;
+      text-decoration: none;
+      text-transform: capitalize;
+      transition: all .2s ease;
+    }
+
+    a.active, a:hover {
+      color: #fd9148;
+    }
+
+    a.active {
+      font-size: 15px;
+    }
+  }
+}
+
+.header {
+  padding: 15px 0;
+
+  .h3 {
+    margin: 0;
+  }
+}
+.product-item {
+  display: block;
+  margin: 0 38px 15px 0;
+
+  &:nth-child(4n) {
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 1199px) {
+    margin: 0 10px 15px 0;
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+}
+
+.empty-title {
+  font: 300 24px "Roboto", sans-serif;
+  text-transform: uppercase;
+  display: block;
+  align-self: center;
+}
+
+//SPINNER
+//TODO: REPLACE TO COMMON STYLES OR COMPONENT
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ellipsis  {
+  div {
+    position: absolute;
+    top: 36px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #292929;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+}
+
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}

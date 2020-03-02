@@ -1,0 +1,59 @@
+<div class="small-cart">
+  <div class="small-cart-inner">
+    <ul class="cart-list" *ngIf="cartService.loadedProducts">
+      <!--   PRODUCT ITEM   -->
+      <li *ngFor="let item of cartService.loadedProducts; index as i">
+        <div class="product-item row space-between">
+          <!-- PRODUCT IMG -->
+          <div class="column" *ngIf="item.brand | async as brand">
+            <a [routerLink]="['/shop/product', item.id]" routerLinkActive="$router_link-active$" class="product-img" [title]="brand.name + ' ' + item.name.title" (click)="$event.preventDefault();">
+              <img [src]="item.screen | serverImage" alt="img">
+            </a>
+          </div>
+          <!-- PRODUCT NAME -->
+          <div class="column space-between" *ngIf="this.cartService.storedItems[i].count">
+            <div class="top" >
+              <a [routerLink]="['/shop/product', item.id]" routerLinkActive="$router_link-active$" class="name-link" >
+                {{ item.name.title}}
+              </a>
+            </div>
+            <div class="bottom row"  >
+              <span class="count">x{{ this.cartService.storedItems[i].count }}</span>
+              <span class="price">&pound;{{ item.price | productPrice}}</span>
+            </div>
+          </div>
+          <!-- PRODUCT DELETE CONTROL -->
+          <div class="column">
+            <app-delete-item-btn (click)="cartService.deleteItem(item.id)"></app-delete-item-btn>
+          </div>
+        </div>
+      </li>
+      <li>
+        <!--   PRODUCTS TOTAL INFO   -->
+        <div class="product-info">
+          <div class="sub-total row space-between">
+            <span>Sub Total</span>
+            <span>&pound;{{ cartService.priceWithoutCalculating | productPrice}}</span>
+          </div>
+          <div class="eco row space-between">
+            <span>Eco Tax(-{{ cartService.ecoTaxValue * 100 | productPrice }})</span>
+            <span>&pound;{{ cartService.calculatedEcoTax | productPrice}}</span>
+          </div>
+          <div class="vat row space-between">
+            <span>VAT({{ cartService.vatValue * 100 }}%)</span>
+            <span>&pound;{{ cartService.calculatedVat | productPrice}}</span>
+          </div>
+          <div class="total row space-between">
+            <span>Total</span>
+            <span>&pound;{{ cartService.calculatedFullPrice | productPrice }}</span>
+          </div>
+        </div>
+        <!--   CART NAVIGATION CONTROLS   -->
+        <div class="controls row space-between">
+          <a [routerLink]="['/shop/cart']" routerLinkActive="$router_link-active$" class="add-to-cart-button" (click)="navigated.emit(true)">View Cart</a>
+          <a [routerLink]="['/shop/checkout']" routerLinkActive="$router_link-active$" class="add-to-cart-button" (click)="navigated.emit(true)">Checkout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

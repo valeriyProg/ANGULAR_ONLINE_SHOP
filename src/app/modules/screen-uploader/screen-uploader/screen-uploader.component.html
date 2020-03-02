@@ -1,0 +1,7 @@
+<div class="screen-group row">
+  <div class="file-wrapper">
+    <p>Select Picture:</p>
+    <input type="file" (change)="changeFile($event)" class="file-input">
+  </div>
+  <img class="item-screen" [src]="selectedImage || (value ? (value | serverImage) : defaultImage)" alt="Item Screen">
+</div>

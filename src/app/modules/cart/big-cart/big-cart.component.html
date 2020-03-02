@@ -1,0 +1,144 @@
+<div class="big-cart" *ngIf="cartService.loadedProducts.length > 0; else empty_cart">
+  <h1>Use gift certificate</h1>
+  <mat-divider></mat-divider>
+  <!--  CART PRODUCT TABLE  -->
+  <div class="cart-content">
+    <div class="row">
+      <div class="cart-table">
+        <div class="cart-table-inner">
+          <table>
+            <!--  TABLE HEAD   -->
+            <thead>
+            <tr>
+              <td class="text-center">Image</td>
+              <td>Product Name</td>
+              <td>Model</td>
+              <td>Quantity</td>
+              <td class="text-right">Unit Price</td>
+              <td class="text-right">Total</td>
+            </tr>
+            </thead>
+            <tbody>
+            <!--  TABLE ROW  -->
+            <tr *ngFor="let product of cartService.loadedProducts; index as i">
+              <!-- PRODUCT SCREEN TD -->
+              <td *ngIf="product.brand | async as brand">
+                <a [routerLink]="['/shop/product', product.id]" routerLinkActive="$router_link-active$"
+                   [title]="brand.name + ' ' + product.name.title" class="product-img">
+                  <img [src]="product.screen | serverImage"  alt="img">
+                </a>
+              </td>
+              <!-- PRODUCT NAME TD -->
+              <td class="name">
+                <a [routerLink]="['/shop/product', product.id]" routerLinkActive="$router_link-active$">
+                  {{ product.name.title }}
+                </a>
+                <span *ngIf="cartService.storedItems[i].size === sizeMode.SMALL">Size: Small</span>
+                <span *ngIf="cartService.storedItems[i].size === sizeMode.MEDIUM">Size: Medium</span>
+                <span *ngIf="cartService.storedItems[i].size === sizeMode.LARGE">Size: Large</span>
+              </td>
+              <!-- PRICE TD -->
+              <td>Model</td>
+              <td class="quantity">
+                <div class="quantity-inner row">
+                  <input type="text" class="count-input" [value]="cartService.storedItems[i].count">
+                  <button type="button" class="delete-btn" (click)="cartService.deleteItem(product.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </button>
+                </div>
+              </td>
+              <td class="price">
+                <span class="text-right">&pound;{{ product.price | productPrice }}</span>
+              </td>
+              <!-- TOTAL PRICE TD -->
+              <td class="total-price">
+                <span class="text-right">&pound;{{ product.price | productPrice }}</span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--  CART COUPONS INFO  -->
+    <div class="column">
+      <h2>What would you like to do next?</h2>
+      <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+      <div class="panel-group">
+        <div class="panel">
+          <div class="panel-head">
+            <a href="#" class="name" (click)="toggleAccordion($event, 0)">Use coupon code
+              <i class="fa fa-caret-down"></i>
+            </a>
+          </div>
+          <div class="panel-content" [ngClass]="{ 'collapsed': accordionDisplayState[0] }">
+            <div class="panel-content-inner">
+              <label for="coupon-input">Enter your coupon here</label>
+              <div class="input row space-between">
+                <input type="text" id="coupon-input">
+                <a href="" class="apply-btn" >Apply Coupon</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <a href="#" class="name" (click)="toggleAccordion($event, 1)">Use gift certificate
+              <i class="fa fa-caret-down"></i>
+            </a>
+          </div>
+          <div class="panel-content" [ngClass]="{ 'collapsed': accordionDisplayState[1] }">
+            <div class="panel-content-inner">
+              <label for="certificate-input">Enter your coupon here</label>
+              <div class="input row space-between">
+                <input type="text" id="certificate-input">
+                <a href="#" class="apply-btn" >Apply Coupon</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calculation-info">
+      <div class="calculation-table">
+        <table>
+          <tbody>
+          <tr>
+            <td><strong>Sub-Total:</strong></td>
+            <td>${{ cartService.priceWithoutCalculating | productPrice }}</td>
+          </tr>
+          <tr>
+            <td><strong>Eco Tax (-{{ cartService.ecoTaxValue * 100 | productPrice }}):</strong></td>
+            <td>${{ cartService.calculatedEcoTax | productPrice }}</td>
+          </tr>
+          <tr>
+            <td><strong>VAT ({{ cartService.vatValue * 100 | productPrice }}%):</strong></td>
+            <td>${{ cartService.calculatedVat | productPrice }}</td>
+          </tr>
+          <tr>
+            <td><strong>Total:</strong></td>
+            <td>${{ cartService.calculatedFullPrice | productPrice }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--  CART CONTROLS  -->
+    <div class="row cart-controls space-between">
+      <a [routerLink]="['/shop']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Continue Shopping</a>
+      <a [routerLink]="['/shop/cart/checkout']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Checkout</a>
+    </div>
+  </div>
+</div>
+<!-- EMPTY CART TEMPLATE -->
+<ng-template #empty_cart>
+  <h1>Shopping Cart</h1>
+  <mat-divider></mat-divider>
+  <div class="row">
+    <p>Your Cart is Empty</p>
+  </div>
+  <div class="row empty-cart-control">
+    <a [routerLink]="['/shop']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Continue</a>
+  </div>
+</ng-template>
+

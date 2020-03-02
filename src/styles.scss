@@ -1,1 +1,98 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,600,700&display=swap');
+@import 'app/common/scss/spinner';
+
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+.container-full-width {
+  width: 100%;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.no-wrap {
+  flex-wrap: nowrap;
+}
+.space-between {
+  justify-content: space-between;
+}
+.row-center {
+  justify-content: center;
+}
+.space-around {
+  justify-content: space-around;
+}
+.test-padding {
+  padding-bottom: 500px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+img {
+  display: block;
+}
+
+.submit-btn, .add-to-cart-button {
+  margin-right: 10px;
+  padding: 10px 10px;
+  width: 120px;
+  overflow: hidden;
+  text-transform: uppercase;
+  font: 600 12px/25px "Open Sans", sans-serif;
+  color: #fff;
+  transition: all 0.4s ease;
+  border-radius: 18px;
+  background: #fd9148;
+  letter-spacing: 1.4px;
+  outline: none;
+  outline-offset: 0;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background: #000000;
+  }
+
+  &[disabled] {
+    background: #dddddd;
+
+    &:hover {
+      background: #dddddd;
+    }
+  }
+}
+
+.apply-btn {
+  display: block;
+  padding: 5px 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  font: 600 12px/25px "Open Sans", sans-serif;
+  color: #fff;
+  transition: all 0.4s ease;
+  background: #fd9148;
+  letter-spacing: 1.4px;
+
+  &:hover {
+    background: #000000;
+  }
+}
+

@@ -1,0 +1,32 @@
+<div class="product-list">
+  <div class="header row space-between">
+    <ng-content class="title"></ng-content>
+    <!--  FILTER NAVIGATION LIST  -->
+    <div class="filter-nav">
+      <ul class="filter-nav-list row" *ngIf="promo | async as promoList">
+        <!--    DEFAULT FILTER ITEM     -->
+        <li ><a href="http://localhost:3000/products" (click)="activeLinkPos = undefined; loadProducts($event)"
+                [ngClass]="{'active': activeLinkPos === undefined }">Featured</a></li>
+        <!--    FILTER ITEM     -->
+        <li *ngFor="let item of promoList; index as i">
+          <a [href]="'http://localhost:3000/products/?promo_id=' + item.id"
+             (click)="activeLinkPos = i; loadProducts($event, item.id)"
+             [ngClass]="{'active': activeLinkPos === i}"> {{item.name}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--  PRODUCT LIST -->
+  <div *ngIf="list | async as products">
+    <div class="content row wrap" *ngIf="products.length; else emptyList ">
+      <app-product-item *ngFor="let item of products" [product]="item" class="product-item"></app-product-item>
+    </div>
+  </div>
+  <!--  PRELOADER -->
+  <ng-template #emptyList>
+    <div class="content row wrap">
+      <span class="empty-title">No items find</span>
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+  </ng-template>
+</div>

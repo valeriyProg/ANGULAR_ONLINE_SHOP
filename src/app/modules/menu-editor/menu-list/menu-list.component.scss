@@ -1,0 +1,39 @@
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  a {
+    display: block;
+    padding: 10px;
+    width: 90%;
+    background: #e8e8e8;
+    cursor: pointer;
+    border: 1px solid transparent;
+
+    &:hover {
+      //border: 1px solid #dddddd;
+      border: 1px solid #333333;
+    }
+  }
+
+  .toolbox {
+    width: 10%;
+    overflow: hidden;
+  }
+}
+
+.item-link-selected {
+  border: 1px solid #000 !important;
+  color: #000000;
+}
+
+app-add-item-btn {
+  display: block;
+  width: 90%;
+}
+

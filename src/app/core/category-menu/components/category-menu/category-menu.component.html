@@ -1,0 +1,31 @@
+<div class="categories">
+  <ul class="categories-list row no-wrap space-between" *ngIf="categoryMenu | async as data; else preloader">
+    <li *ngFor="let category of data" class="list-item">
+      <!--      LINK WRAPPER      -->
+      <div class="link-wrapper">
+        <img [src]="category.icon" alt="category img" class="list-item-icon">
+        <a  [routerLink]="['/' + category.name.link]" [queryParams]="category.name.params" routerLinkActive="$router_link-active$"
+            class="list-item-link">{{category.name.title}}</a>
+      </div>
+      <!--      SUBLIST CONTAINER   -->
+      <div class="sub-list-container row" [ngClass]="{ 'wrap': category.submenu.length > 2 }" *ngIf="category.submenu.length > 0">
+        <ul class="sub-list" *ngFor="let submenu of category.submenu">
+          <!--  SUBLIST TITLE-->
+          <li class="list-item list-item-title" *ngIf="submenu.title">
+            <a [routerLink]="['/' + submenu.title.link]" [queryParams]="submenu.title.params" routerLinkActive="$router_link-active$"  class="title">
+              {{submenu.title.title}}
+            </a>
+          </li>
+          <!--  SUBLIST LINK ITEM-->
+          <li *ngFor="let item of submenu.items" class="list-item">
+            <a [routerLink]="['/' + item.link]" [queryParams]="item.params" routerLinkActive="$router_link-active$" >{{item.title}}</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <!--  PRELOADER -->
+  <ng-template #preloader>
+    <p>Loading...</p>
+  </ng-template>
+</div>

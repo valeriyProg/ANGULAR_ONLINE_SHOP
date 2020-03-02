@@ -1,0 +1,17 @@
+<div class="road-nav">
+  <div class="road-nav-inner row">
+    <!--   HOME LINK  -->
+    <div class="column">
+      <a [routerLink]="['/']" routerLinkActive="$router_link-active$" class="home-link">
+        <i class="fa fa-home"></i>
+      </a>
+    </div>
+    <div class="row">
+      >&nbsp;&nbsp;
+      <!--   SELECTED CATEGORY TITLE   -->
+      <span class="title">
+      {{ selectedCategoryTitle }}
+      </span>
+    </div>
+  </div>
+</div>

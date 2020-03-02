@@ -1,0 +1,31 @@
+<div class="list">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" >
+      <!--   COLUMN: ID   -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID: </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!--   COLUMN: NAME   -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!--   COLUMN: VALUE   -->
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <app-delete-item-btn class="delete-btn " (click)="deleteItem(element.id)"></app-delete-item-btn>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="packTypeList.length" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>

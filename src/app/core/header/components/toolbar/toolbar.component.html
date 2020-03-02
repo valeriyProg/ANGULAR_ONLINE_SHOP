@@ -1,0 +1,22 @@
+<ul class="toolbar-list row" >
+  <li class="list-item">Account</li>
+  <li class="list-item" [routerLink]="['/admin']" routerLinkActive="$router_link-active$">Admin</li>
+  <li class="list-item">Wish List</li>
+  <li class="list-item" #cart_item (mouseenter)="onListHover = true" (mouseleave)="onListHover = false">
+    <a href="#" class="cart-link" [ngClass]="{ 'selected': true }" (click)="$event.preventDefault(); display = !display" >
+      <i class="fl-bigmug-line-shopping198"></i>
+      <span>My Cart {{ cartService.itemsCount }}</span>
+      <span>&pound;{{ cartService.calculatedFullPrice | productPrice }}</span>
+    </a>
+    <div class="cart-list-wrapper" [ngClass]="{ 'display': display, 'hide': !display }">
+      <app-small-cart *ngIf="cartService.storedItems.length; else empty_list" class="cart-list" (navigated)="display = false"></app-small-cart>
+      <ng-template #empty_list>
+        <ul class="cart-list">
+          <li>
+            <span class="empty-field">Your shopping cart is empty!</span>
+          </li>
+        </ul>
+      </ng-template>
+    </div>
+  </li>
+</ul>

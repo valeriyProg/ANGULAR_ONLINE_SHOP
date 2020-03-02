@@ -1,0 +1,14 @@
+<div class="category-item" *ngIf="categoryItem.id !== '0'">
+  <div class="category-item-inner">
+    <div class="screen">
+      <a [routerLink]="['/shop']" [queryParams]="{ category: categoryItem.id }" routerLinkActive="$router_link-active$">
+        <img [src]="categoryItem.screen"  alt="screen">
+      </a>
+    </div>
+    <div class="description">
+      <a [routerLink]="['/shop']" [queryParams]="{ category: categoryItem.id }" routerLinkActive="$router_link-active$">
+        <span>{{ categoryItem.name }}</span>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+.submenu-item-editor {
+  min-width: 0;
+  max-width: 0;
+  background: #fcf9f7;
+  overflow: hidden;
+  transition: opacity .5s ease-in-out 0ms;
+  opacity: 0;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.submenu-item-editor-expanded {
+  min-width: 240px;
+  max-width: 300px;
+  max-height: 400px;
+  overflow: auto;
+  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  opacity: 1;
+}
+
+app-delete-item-btn {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.delete-field-btn {
+  display: block;
+  position: relative;
+  align-self: center;
+  top: 10px;
+}
+
+.confirmation-controls-item.row {
+  justify-content: space-around;
+}

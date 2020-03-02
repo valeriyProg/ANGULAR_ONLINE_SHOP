@@ -1,0 +1,36 @@
+header {
+  padding: 15px 50px;
+  background-color: #1c2b36;
+  box-shadow: 2px 0 3px rgba(0,0,0,.5);
+}
+
+.admin-logo {
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 60px;
+  font: 600 24px 'Roboto', sans-serif;
+  transition: color .2s ease;
+
+  span {
+    color: #209e91;
+    font-weight: 400;
+  }
+
+  &:hover {
+    color: #1b867b;
+  }
+}
+
+.hide-menu {
+  display: inline-block;
+  width: 20px;
+  height: 33px;
+  margin-left: 25px;
+  cursor: pointer;
+  background: url('https://api.iconify.design/ion-navicon.svg?color=%23ffffff&width=30&height=40') no-repeat center center;
+
+  &:hover {
+    background: url('https://api.iconify.design/ion-navicon.svg?color=%231b867b&width=30&height=40') no-repeat center center;
+  }
+}

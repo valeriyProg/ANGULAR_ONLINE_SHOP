@@ -1,0 +1,21 @@
+.menu-item-editor {
+  min-width: 200px;
+  max-height: 350px;
+  padding: 15px 15px;
+  margin-right: 20px;
+  background: #fcf9f7;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 8;
+
+  .config-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .item-editor-submit-btn {
+    display: block;
+    margin: 10px auto;
+  }
+}

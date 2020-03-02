@@ -1,0 +1,25 @@
+<div class="menu-create">
+  <div class="create-top row">
+    <div class="menu-container">
+      <!--   MENU LIST COMPONENT   -->
+      <app-menu-list></app-menu-list>
+      <!--   TOOLBAR  BUTTONS -->
+      <div class="toolbar row">
+        <button mat-button *ngIf="!uploading; else updating" (click)="upload()">SAVE & UPLOAD</button>
+        <button mat-button *ngIf="!restoring; else restoreBtn" (click)="restore()">RESTORE</button>
+        <!--    PRELOADER    -->
+        <ng-template #updating>
+          <button mat-button >Loading...</button>
+        </ng-template>
+        <!--    PRELOADER    -->
+        <ng-template #restoreBtn>
+          <button mat-button >Restoring...</button>
+        </ng-template>
+      </div>
+    </div>
+    <div class="editor-container row" [ngClass]="{ 'editor-expanded': menuEditorService.isEditorContainerExpanded }">
+      <app-menu-item-editor></app-menu-item-editor>
+      <app-submenu-list-panel></app-submenu-list-panel>
+    </div>
+  </div>
+</div>
