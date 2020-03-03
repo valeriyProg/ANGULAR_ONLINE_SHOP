@@ -42,9 +42,9 @@
             <p>Size</p>
             <div class="size-wrapper">
               <mat-radio-group aria-label="Select an option" color="primary" class="column" (change)="selectedPackSize = $event.value" #radio>
-                <mat-radio-button [value]="packSize.SMALL" checked>SMALL</mat-radio-button>
-                <mat-radio-button [value]="packSize.MEDIUM">MEDIUM</mat-radio-button>
-                <mat-radio-button [value]="packSize.LARGE">LARGE</mat-radio-button>
+                <mat-radio-button [value]="packSize.SMALL" [checked]="selectedPackSize === packSize.SMALL">SMALL</mat-radio-button>
+                <mat-radio-button [value]="packSize.MEDIUM" [checked]="selectedPackSize === packSize.MEDIUM">MEDIUM</mat-radio-button>
+                <mat-radio-button [value]="packSize.LARGE" [checked]="selectedPackSize === packSize.LARGE">LARGE</mat-radio-button>
               </mat-radio-group>
             </div>
             <div class="row space-between">

@@ -8,6 +8,7 @@
 }
 .banner-wrapper {
   padding-top: 53px;
+  min-height: 500px;
 }
 section.row {
   margin-bottom: 20px;
@@ -22,4 +23,11 @@ section.row {
   margin: 0;
   color: #3d454c;
   text-transform: uppercase;
+}
+
+.spinner {
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
 }

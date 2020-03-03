@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit{
   product: Observable<ProductFullModel>;
   addToCartForm: FormGroup;
   packSize = ProductSizeEnum;
-  selectedPackSize: number = 0;
+  selectedPackSize: number;
 
   constructor(private activatedRoute: ActivatedRoute,
               private productService: ProductContract,
@@ -31,8 +31,10 @@ export class ProductDetailComponent implements OnInit{
     });
 
     this.addToCartForm = this.fb.group({
-      quantity: 1
+      quantity: this.cartService.getStoredItem(this.productId).count
     });
+
+    this.selectedPackSize = this.cartService.getStoredItem(this.productId).size;
   }
 
   get quantity():number {

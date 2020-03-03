@@ -1,9 +1,9 @@
-<div class="product-list">
+<div class="product-list" *ngIf="promo | async as promoList">
   <div class="header row space-between">
     <ng-content class="title"></ng-content>
     <!--  FILTER NAVIGATION LIST  -->
     <div class="filter-nav">
-      <ul class="filter-nav-list row" *ngIf="promo | async as promoList">
+      <ul class="filter-nav-list row" >
         <!--    DEFAULT FILTER ITEM     -->
         <li ><a href="http://localhost:3000/products" (click)="activeLinkPos = undefined; loadProducts($event)"
                 [ngClass]="{'active': activeLinkPos === undefined }">Featured</a></li>

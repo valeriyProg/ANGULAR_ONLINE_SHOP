@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import BannerModel from "../common/models/banner.model";
 import {BannerTypeEnum} from "../common/enums/banner-type.enum";
 
@@ -7,7 +7,15 @@ import {BannerTypeEnum} from "../common/enums/banner-type.enum";
   templateUrl: './banner-item.component.html',
   styleUrls: ['./banner-item.component.scss']
 })
-export class BannerItemComponent {
+export class BannerItemComponent implements AfterViewInit{
   @Input() data: BannerModel;
   bannerTypeEnum = BannerTypeEnum;
+  loadedData: boolean = false;
+
+  ngAfterViewInit(): void {
+    //SIMULATED DELAY
+    setTimeout(() => {
+      this.loadedData = true;
+    }, 100);
+  }
 }

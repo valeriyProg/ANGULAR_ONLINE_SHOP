@@ -1,5 +1,5 @@
 <div class="categories">
-  <ul class="categories-list row no-wrap space-between" *ngIf="categoryMenu | async as data; else preloader">
+  <ul class="categories-list row no-wrap space-between" *ngIf="categoryMenu | async as data">
     <li *ngFor="let category of data" class="list-item">
       <!--      LINK WRAPPER      -->
       <div class="link-wrapper">
@@ -24,8 +24,4 @@
       </div>
     </li>
   </ul>
-  <!--  PRELOADER -->
-  <ng-template #preloader>
-    <p>Loading...</p>
-  </ng-template>
 </div>

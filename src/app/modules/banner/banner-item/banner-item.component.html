@@ -1,5 +1,5 @@
-<div class="banner" *ngIf="data">
-  <div class="banner-inner">
+<div class="banner">
+  <div class="banner-inner"  *ngIf="data">
     <!--  BANNER IMG  -->
     <div class="banner-img">
       <img [src]="data.screen" alt="banner img">
@@ -9,7 +9,7 @@
                                               'middle': data.type === bannerTypeEnum.ShopBy,
                                               'bottom': data.type === bannerTypeEnum.New }">
       <!--   DESCRIPTION  -->
-      <div class="banner-description">
+      <div class="banner-description" *ngIf="loadedData">
         <!--     NEW BANNER   -->
         <div *ngIf="data.type === bannerTypeEnum.New" class="new-banner">
           <h2>{{ data.title }}</h2>

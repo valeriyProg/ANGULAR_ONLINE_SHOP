@@ -20,6 +20,7 @@ import {CategoryModule} from "../modules/category/category.module";
 import {RouterModule} from "@angular/router";
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import {CartModule} from "../modules/cart/cart.module";
+import {SpinnerModule} from "../ui/spinner/spinner.module";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {CartModule} from "../modules/cart/cart.module";
     RoadNavModule,
     CategoryModule,
     RouterModule,
-    CartModule
+    CartModule,
+    SpinnerModule
   ],
   exports: [
     ShopComponent,

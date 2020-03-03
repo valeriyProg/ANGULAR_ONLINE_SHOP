@@ -28,12 +28,19 @@ export class CartService {
   }
 
   addItem(id: string, size: number | string, count?: number) {
-    let item = {
-      id: id,
-      count: count ? count : 1,
-      size: +(size)
-    };
-    this.storedItems.push(item);
+    const index = this.storedItems.findIndex(item => item.id === id);
+    if (index != -1) {
+      this.storedItems[index].count = count;
+      this.storedItems[index].size = +size;
+    } else {
+      let item = {
+        id: id,
+        count: count ? count : 1,
+        size: +(size)
+      };
+      this.storedItems.push(item);
+    }
+
     this.localstorageService.set(this.key, this.storedItems);
     this.loadProducts();
     this.changeCartItems.next(true);

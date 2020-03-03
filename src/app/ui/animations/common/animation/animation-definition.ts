@@ -6,9 +6,11 @@ export const slideInAnimation =
       style({ position: 'relative' }),
       query(':enter, :leave', [
         style({
-          position: 'fixed',
+          position: 'absolute',
+          left: 0,
+          top: 0,
           width: '100%',
-          height: '100%'
+          height: '800%'
         })
       ], { optional: true }),
       query(':enter', [
@@ -29,9 +31,11 @@ export const slideInAnimation =
       style({ position: 'relative' }),
       query(':enter, :leave', [
         style({
-          position: 'fixed',
+          position: 'absolute',
+          left: 0,
+          top: 0,
           width: '100%',
-          height: '100%'
+          height: '800%'
         })
       ]),
       query(':enter', [

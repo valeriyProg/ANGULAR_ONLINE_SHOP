@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BannerService} from "../../../modules/banner/common/services/banner.service";
 import BannerModel from "../../../modules/banner/common/models/banner.model";
 import {PackageTypeEnum} from "../../../modules/product/common/enums/package-type.enum";
