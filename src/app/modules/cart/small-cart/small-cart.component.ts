@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {CartService} from "../common/services/cart.service";
 import ProductContract from "../../product/common/contracts/product.contract";
 
@@ -7,11 +7,10 @@ import ProductContract from "../../product/common/contracts/product.contract";
   templateUrl: './small-cart.component.html',
   styleUrls: ['./small-cart.component.scss']
 })
-export class SmallCartComponent implements OnInit {
+export class SmallCartComponent {
   @Output() navigated: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private cartService: CartService,
               private productService: ProductContract) { }
 
-   ngOnInit() { }
 }

@@ -1,9 +1,8 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartService} from "../common/services/cart.service";
 import ProductContract from "../../product/common/contracts/product.contract";
 import {ProductSizeEnum} from "../../product/common/enums/product-size.enum";
-import ProductFullModel from "../../product/common/models/product-full.model";
-import {Observable} from "rxjs";
+import CouponModel from "../common/models/coupon.model";
 
 @Component({
   selector: 'app-big-cart',
@@ -12,15 +11,11 @@ import {Observable} from "rxjs";
 })
 export class BigCartComponent implements OnInit {
   sizeMode = ProductSizeEnum;
+  appliedCoupon: CouponModel;
 
-  accordionDisplayState = [false, true];
   constructor(private cartService: CartService,
               private productService: ProductContract) { }
 
   ngOnInit() { }
 
-  toggleAccordion(e: Event, index: number){
-    e.preventDefault();
-    this.accordionDisplayState[index] = !this.accordionDisplayState[index];
-  }
 }

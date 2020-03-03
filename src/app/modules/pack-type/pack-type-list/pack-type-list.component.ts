@@ -1,20 +1,22 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {AddToolsService} from "../../../admin/common/services/add-tools.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import {PackTypeService} from "../common/services/pack-type.service";
 import PackTypeModel from "../common/models/pack-type.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-pack-type-list',
   templateUrl: './pack-type-list.component.html',
   styleUrls: ['./pack-type-list.component.scss']
 })
-export class PackTypeListComponent implements OnInit {
+export class PackTypeListComponent implements OnInit, OnDestroy {
   packTypeList: PackTypeModel[] = [];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   displayedColumns: string[] = ['id', 'name', 'value'];
   dataSource: MatTableDataSource<PackTypeModel>;
+  private subscriptions: Subscription[] = [];
 
   constructor(private packTypeService: PackTypeService,
               private addToolsService: AddToolsService) {}
@@ -26,17 +28,25 @@ export class PackTypeListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     });
 
-    this.addToolsService.apiRequested.subscribe(value => {
+    let requestedSubs =  this.addToolsService.apiRequested.subscribe(value => {
       this.packTypeService.list().subscribe(data=> {
         this.packTypeList = data;
         this.dataSource.data = data;
       });
     });
+
+    this.subscriptions.push(requestedSubs);
   }
 
   deleteItem(id:string) {
     this.packTypeService.delete(id).subscribe(res => {
       this.addToolsService.apiRequested.next(null);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(value => {
+      value.unsubscribe();
     });
   }
 }

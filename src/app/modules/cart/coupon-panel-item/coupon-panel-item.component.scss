@@ -1,0 +1,86 @@
+.panel {
+  margin: 15px 0;
+  border: 1px solid #ddd;
+
+  .panel-head {
+    background-color: #f9f9f9;
+
+    a {
+      display: block;
+      padding: 20px;
+      position: relative;
+      text-transform: uppercase;
+      width: auto;
+      color: inherit;
+      text-decoration: none;
+      font: 600 16px/21px "Raleway", sans-serif;
+
+      &:hover {
+        color: #fd9148;
+      }
+
+      i {
+        display: inline-block;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .panel-content {
+    max-height: 500px;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+
+    label {
+      display: block;
+      margin: 0 0 10px;
+      font: 400 12px 'Raleway', sans-serif;
+    }
+
+    input {
+      display: block;
+      padding: 10px;
+      width: 70%;
+      border: 1px solid #ddd;
+      color: inherit;
+      outline: none;
+
+      &:focus {
+        outline: 1px solid #bfbfbf;
+      }
+    }
+  }
+
+  .panel-content-inner {
+    padding: 25px 20px;
+    border-top: 1px solid #ddd;
+  }
+}
+
+.collapsed {
+  max-height: 0 !important;
+  border: none !important;
+}
+
+.validation {
+  display: none;
+
+  span {
+    display: block;
+    margin-top: 5px;
+  }
+}
+
+.displayed {
+  display: block !important;
+}
+
+
+
+.valid {
+  color: #00ff80;
+}
+
+.invalid {
+  color: red;
+}

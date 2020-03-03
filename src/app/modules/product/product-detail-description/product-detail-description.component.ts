@@ -30,7 +30,7 @@ export class ProductDetailDescriptionComponent implements OnInit {
     });
   }
 
-  initForm() {
+  private initForm() {
     this.reviewForm = this.fb.group({
       id: this.description.id,
       name: '',

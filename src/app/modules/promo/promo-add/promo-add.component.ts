@@ -19,7 +19,7 @@ export class PromoAddComponent implements OnInit {
     this.initForm();
   }
 
-  initForm() {
+  private initForm() {
     this.addForm = this.fb.group({
       name: ''
     });

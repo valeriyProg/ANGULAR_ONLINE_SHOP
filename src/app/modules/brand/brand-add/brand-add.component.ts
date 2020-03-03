@@ -21,7 +21,7 @@ export class BrandAddComponent implements OnInit {
     this.initForm();
   }
 
-  initForm() {
+  private initForm() {
     this.addForm = this.fb.group({
       name: ''
     });

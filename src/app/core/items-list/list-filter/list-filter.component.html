@@ -52,7 +52,7 @@
           </li>
         </ul>
         <select name="filter" id="filter">
-          <option *ngFor="let item of listService.sortNav" [value]="item.query_params">{{ item.name }}</option>
+          <option *ngFor="let item of listService.sortNav" [value]="item.sortFilter">{{ item.name }}</option>
         </select>
       </div>
     </div>

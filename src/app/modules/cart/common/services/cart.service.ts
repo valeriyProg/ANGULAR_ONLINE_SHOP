@@ -4,6 +4,8 @@ import LocalstorageCartModel from "../../../product/common/models/localstorage-c
 import {BehaviorSubject, fromEvent} from "rxjs";
 import ProductFullModel from "../../../product/common/models/product-full.model";
 import ProductContract from "../../../product/common/contracts/product.contract";
+import CouponModel from "../models/coupon.model";
+import CouponStatusMessageModel from "../models/coupon-status-message.model";
 
 @Injectable()
 export class CartService {
@@ -11,9 +13,10 @@ export class CartService {
   storedItems: LocalstorageCartModel[];
   changeCartItems: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   loadedProducts: ProductFullModel[];
-  private productsPrice = 0;
   ecoTaxValue = 0.02;
   vatValue = 0.2;
+  coupons: CouponModel[] = [];
+  private productsPrice = 0;
 
   constructor(private localstorageService: LocalstorageService,
               private productService: ProductContract) {
@@ -55,6 +58,32 @@ export class CartService {
     return JSON.parse(this.localstorageService.get(this.key));
   }
 
+  addCoupon(coupon: CouponModel): CouponStatusMessageModel {
+    const index = this.coupons.findIndex(value => value.id === coupon.id);
+
+    if (index != -1) {
+      return {
+        status: false,
+        message: 'Coupon already exist'
+      };
+    }
+
+    this.coupons.push(coupon);
+    return {
+      status: true,
+      message: 'Coupon successful apply'
+    };
+  }
+
+  loadProducts(): void {
+    this.loadedProducts = [];
+    this.storedItems.forEach(value => {
+      this.productService.get(value.id).subscribe(item => {
+        this.loadedProducts.push(item);
+      });
+    });
+  }
+
   deleteItem(id: string) {
     const index = this.storedItems.findIndex(item => item.id === id);
     this.storedItems.splice(index, 1);
@@ -80,6 +109,13 @@ export class CartService {
   }
 
   get calculatedFullPrice(): number {
+    if (this.coupons.length) {
+      let price = this.priceWithoutCalculating;
+      this.coupons.forEach(value => {
+        price = price - (value.discount * price);
+      });
+      return  price + this.calculatedVat + this.calculatedEcoTax;
+    }
     return this.priceWithoutCalculating + this.calculatedVat + this.calculatedEcoTax;
   }
 
@@ -89,14 +125,5 @@ export class CartService {
       length += item.count;
     });
     return length;
-  }
-
-  loadProducts(): void {
-    this.loadedProducts = [];
-    this.storedItems.forEach(value => {
-      this.productService.get(value.id).subscribe(item => {
-        this.loadedProducts.push(item);
-      });
-    });
   }
 }

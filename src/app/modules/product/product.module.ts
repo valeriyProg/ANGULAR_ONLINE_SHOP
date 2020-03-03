@@ -31,6 +31,7 @@ import {ContentDescriptionService} from "./common/services/content-description.s
 import {SpinnerModule} from "../../ui/spinner/spinner.module";
 import {LocalstorageService} from "./common/services/localstorage.service";
 import {MatRadioModule} from "@angular/material/radio";
+import { ProductSortPipe } from './common/pipes/product-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatRadioModule} from "@angular/material/radio";
     ProductAddComponent,
     ProductListTableComponent,
     ProductPricePipe,
-    ProductDetailDescriptionComponent
+    ProductDetailDescriptionComponent,
+    ProductSortPipe
   ],
   imports: [
     CommonModule,
@@ -78,7 +80,8 @@ import {MatRadioModule} from "@angular/material/radio";
     ProductEditComponent,
     ProductAddComponent,
     ProductListTableComponent,
-    ProductPricePipe
+    ProductPricePipe,
+    ProductSortPipe
   ]
 })
 export class ProductModule { }

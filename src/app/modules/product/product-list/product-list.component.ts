@@ -17,6 +17,7 @@ export class ProductListComponent implements OnInit {
   list: Observable<ProductFullModel[]>;
   promo: Observable<PromoModel[]>;
   activeLinkPos: number;
+
   constructor(private productService: ProductContract, private promoService: PromoService) { }
 
   ngOnInit() {

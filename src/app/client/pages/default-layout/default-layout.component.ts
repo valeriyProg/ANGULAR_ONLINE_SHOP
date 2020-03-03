@@ -8,7 +8,6 @@ import {RouterOutlet} from "@angular/router";
   styleUrls: ['./default-layout.component.scss'],
   animations: [
     slideInAnimation
-    // animation triggers go here
   ]
 })
 export class DefaultLayoutComponent {

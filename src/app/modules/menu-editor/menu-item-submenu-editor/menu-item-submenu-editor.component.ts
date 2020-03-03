@@ -1,25 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MenuEditorService} from "../common/services/menu-editor.service";
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import CategoryMenuItemModel from "../../../core/category-menu/common/models/category-menu-item.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-menu-item-submenu-editor',
   templateUrl: './menu-item-submenu-editor.component.html',
   styleUrls: ['./menu-item-submenu-editor.component.scss']
 })
-export class MenuItemSubmenuEditorComponent implements OnInit {
+export class MenuItemSubmenuEditorComponent implements OnInit, OnDestroy {
   menuData: CategoryMenuItemModel[];
   submenuForm: FormGroup;
+  private subscriptions: Subscription[] = [];
   constructor(private menuEditorService: MenuEditorService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.menuEditorService.openSubmenuEditForm.subscribe(state=> {
+    let openSubs = this.menuEditorService.openSubmenuEditForm.subscribe(state=> {
       if (state) {
         this.menuData = this.menuEditorService.menuData;
         this.setDefaultSubmenuData();
       }
     });
+    this.subscriptions.push(openSubs);
   }
 
   get submenu(): FormArray {
@@ -82,5 +85,11 @@ export class MenuItemSubmenuEditorComponent implements OnInit {
     this.setDefaultSubmenuData();
     this.menuEditorService.hideSubmenuEditForm();
     this.menuEditorService.showSubmenuListPanel();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(value => {
+      value.unsubscribe();
+    });
   }
 }

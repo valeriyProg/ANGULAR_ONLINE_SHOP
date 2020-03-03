@@ -1,0 +1,21 @@
+<div class="panel">
+  <div class="panel-head">
+    <a href="#" class="name" (click)="$event.preventDefault(); expanded = !expanded">
+      <ng-content select=".coupon-text"></ng-content>
+      <i class="fa fa-caret-down"></i>
+    </a>
+  </div>
+  <div class="panel-content" [ngClass]="{ 'collapsed': !expanded }">
+    <div class="panel-content-inner">
+      <label for="coupon-input">Enter your coupon here</label>
+      <div class="input row space-between">
+        <input type="text" id="coupon-input" #input>
+        <a href="#" class="apply-btn" (click)="apply($event, input.value)">Apply Coupon</a>
+      </div>
+      <div class="validation" [ngClass]="{ 'displayed': validateDisplay }">
+        <span class="valid" *ngIf="confirmed">{{ validMessage }}</span>
+        <span class="invalid" *ngIf="!confirmed">{{ validMessage }}</span>
+      </div>
+    </div>
+  </div>
+</div>

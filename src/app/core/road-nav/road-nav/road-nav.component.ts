@@ -1,15 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-road-nav',
   templateUrl: './road-nav.component.html',
   styleUrls: ['./road-nav.component.scss']
 })
-export class RoadNavComponent implements OnInit {
+export class RoadNavComponent {
   @Input() selectedCategoryTitle: string;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

@@ -13,7 +13,6 @@ import {ProductEditService} from "../common/services/product-edit.service";
 import {FormDataService} from "../../form-data/common/services/form-data.service";
 import PromoModel from "../../promo/common/models/promo.model";
 import {PromoService} from "../../promo/common/services/promo.service";
-import {consoleTestResultHandler} from "tslint/lib/test";
 
 @Component({
   selector: 'app-product-edit',

@@ -65,40 +65,17 @@
       <h2>What would you like to do next?</h2>
       <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
       <div class="panel-group">
-        <div class="panel">
-          <div class="panel-head">
-            <a href="#" class="name" (click)="toggleAccordion($event, 0)">Use coupon code
-              <i class="fa fa-caret-down"></i>
-            </a>
-          </div>
-          <div class="panel-content" [ngClass]="{ 'collapsed': accordionDisplayState[0] }">
-            <div class="panel-content-inner">
-              <label for="coupon-input">Enter your coupon here</label>
-              <div class="input row space-between">
-                <input type="text" id="coupon-input">
-                <a href="" class="apply-btn" >Apply Coupon</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="panel">
-          <div class="panel-head">
-            <a href="#" class="name" (click)="toggleAccordion($event, 1)">Use gift certificate
-              <i class="fa fa-caret-down"></i>
-            </a>
-          </div>
-          <div class="panel-content" [ngClass]="{ 'collapsed': accordionDisplayState[1] }">
-            <div class="panel-content-inner">
-              <label for="certificate-input">Enter your coupon here</label>
-              <div class="input row space-between">
-                <input type="text" id="certificate-input">
-                <a href="#" class="apply-btn" >Apply Coupon</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!--   COUPON PANEL    -->
+        <app-coupon-panel-item [expanded]="true">
+          <span class="coupon-text">Use coupon code</span>
+        </app-coupon-panel-item>
+        <!--   COUPON PANEL    -->
+        <app-coupon-panel-item [expanded]="false">
+          <span class="coupon-text">Use gift certificate</span>
+        </app-coupon-panel-item>
       </div>
     </div>
+    <!--  CALCULATED PRICE INFO  -->
     <div class="calculation-info">
       <div class="calculation-table">
         <table>
@@ -141,4 +118,3 @@
     <a [routerLink]="['/shop']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Continue</a>
   </div>
 </ng-template>
-

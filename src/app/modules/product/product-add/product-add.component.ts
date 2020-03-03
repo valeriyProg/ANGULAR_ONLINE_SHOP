@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable, Subscription} from "rxjs";
 import BrandModel from "../../brand/common/models/brand.model";
 import ChocolateTypeModels from "../../chocolate-type/common/models/chocolate-type.models";
 import PackTypeModel from "../../pack-type/common/models/pack-type.model";
@@ -19,13 +19,14 @@ import PromoModel from "../../promo/common/models/promo.model";
   templateUrl: './product-add.component.html',
   styleUrls: ['./product-add.component.scss']
 })
-export class ProductAddComponent implements OnInit {
+export class ProductAddComponent implements OnInit, OnDestroy {
   promoList: Observable<PromoModel[]>;
   brands: Observable<BrandModel[]>;
   chocolateType: Observable<ChocolateTypeModels[]>;
   packType: Observable<PackTypeModel[]>;
   addForm: FormGroup;
   screen: string;
+  private subscriptions: Subscription[] = [];
 
   constructor(private productService: ProductContract,
               private brandService: BrandService,
@@ -44,15 +45,18 @@ export class ProductAddComponent implements OnInit {
     this.chocolateType = this.chocolateTypeService.list();
 
     this.initForm();
-    this.addToolsService.apiRequested.subscribe(value=> {
+
+    let requestedSubs = this.addToolsService.apiRequested.subscribe(value=> {
       this.promoList = this.promoService.list();
       this.brands = this.brandService.list();
       this.packType = this.packService.list();
       this.chocolateType = this.chocolateTypeService.list();
     });
+
+    this.subscriptions.push(requestedSubs);
   }
 
-  initForm () {
+  private initForm () {
     this.addForm = this.fb.group({
       name: '',
       brand_id: undefined,
@@ -77,6 +81,12 @@ export class ProductAddComponent implements OnInit {
     const data = this.formDataService.formGroupToFormData(this.addForm);
     this.productService.add(data).subscribe(res=> {
       this.addToolsService.apiRequested.next(null);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(value => {
+      value.unsubscribe();
     });
   }
 }

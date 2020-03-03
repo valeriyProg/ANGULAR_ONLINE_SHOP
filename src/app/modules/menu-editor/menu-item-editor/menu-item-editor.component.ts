@@ -1,27 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MenuEditorService} from "../common/services/menu-editor.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-menu-item-editor',
   templateUrl: './menu-item-editor.component.html',
   styleUrls: ['./menu-item-editor.component.scss']
 })
-export class MenuItemEditorComponent implements OnInit {
+export class MenuItemEditorComponent implements OnInit, OnDestroy {
   menuItemForm: FormGroup;
+  private subscriptions: Subscription[] = [];
   constructor(private fb: FormBuilder, private menuEditorService: MenuEditorService) { }
 
   ngOnInit() {
-    this.menuEditorService.dataLoaded.subscribe(state=> {
+    let loadedSubs = this.menuEditorService.dataLoaded.subscribe(state=> {
       if (state) {
         this.initForm();
       }
     });
-    this.menuEditorService.changeItem.subscribe(state=> {
+
+    let changeSubs = this.menuEditorService.changeItem.subscribe(state=> {
       if (state) {
         this.initForm();
       }
     });
+
+    this.subscriptions.push(loadedSubs);
+    this.subscriptions.push(changeSubs);
   }
 
   initForm(): void {
@@ -63,5 +69,11 @@ export class MenuItemEditorComponent implements OnInit {
     }
     this.menuEditorService.isSubmenuExist = true;
     this.menuEditorService.isSubmenuListPanelExpanded = true;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(value => {
+      value.unsubscribe();
+    });
   }
 }

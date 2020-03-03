@@ -12,6 +12,8 @@ import { CartAccordionComponent } from './cart-accordion/cart-accordion.componen
 import { AddToCartModalComponent } from './add-to-cart-modal/add-to-cart-modal.component';
 import { CartModalMessageComponent } from './cart-modal-message/cart-modal-message.component';
 import {SpinnerModule} from "../../ui/spinner/spinner.module";
+import { CouponPanelItemComponent } from './coupon-panel-item/coupon-panel-item.component';
+import {CouponService} from "./common/services/coupon.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {SpinnerModule} from "../../ui/spinner/spinner.module";
     BigCartComponent,
     CartAccordionComponent,
     AddToCartModalComponent,
-    CartModalMessageComponent
+    CartModalMessageComponent,
+    CouponPanelItemComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import {SpinnerModule} from "../../ui/spinner/spinner.module";
     SpinnerModule
   ],
   providers: [
-    CartService
+    CartService,
+    CouponService
   ],
   exports: [
     SmallCartComponent,

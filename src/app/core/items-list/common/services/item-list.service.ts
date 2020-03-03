@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import SortNavModel from "../models/sort-nav.model";
 import {SortTypeEnumMode} from "../enums/sort-type.enum.mode";
 import {BehaviorSubject} from "rxjs";
 import {DisplayModeEnum} from "../enums/display-mode.enum";
+import {SortFilterEnum} from "../enums/sort-filter.enum";
 
 @Injectable()
 export class ItemListService {
@@ -15,51 +16,44 @@ export class ItemListService {
   sortNav: SortNavModel[] = [
     {
       name: 'Default',
-      query_params: {
-        default: SortTypeEnumMode.ASC
-      }
+      sortFilter: SortFilterEnum.NAME,
+      sortType:  SortTypeEnumMode.DESC
     },
     {
       name: 'Name(A-Z)',
-      query_params: {
-        product_name: SortTypeEnumMode.ASC
-      }
+      sortFilter: SortFilterEnum.NAME,
+      sortType:  SortTypeEnumMode.DESC
     },
     {
       name: 'Name(Z-A)',
-      query_params: {
-        product_name: SortTypeEnumMode.DESC
-      }
+      sortFilter: SortFilterEnum.NAME,
+      sortType:  SortTypeEnumMode.ASC
     },
     {
-      name: 'Model(A-Z)',
-      query_params: {
-        product_name: SortTypeEnumMode.ASC
-      }
+      name: 'Size(Small < Large)',
+      sortFilter: SortFilterEnum.SIZE,
+      sortType:  SortTypeEnumMode.DESC
     },
     {
-      name: 'Model(Z-A)',
-      query_params: {
-        product_name: SortTypeEnumMode.DESC
-      }
-    },
-    {
-      name: 'Price(Low > High)',
-      query_params: {
-        product_name: SortTypeEnumMode.ASC
-      }
+      name: 'Size(Small > Large)',
+      sortFilter: SortFilterEnum.SIZE,
+      sortType:  SortTypeEnumMode.ASC
     },
     {
       name: 'Price(High > Low)',
-      query_params: {
-        product_name: SortTypeEnumMode.DESC
-      }
+      sortFilter: SortFilterEnum.PRICE,
+      sortType:  SortTypeEnumMode.ASC
+    },
+    {
+      name: 'Price(Low > High)',
+      sortFilter: SortFilterEnum.PRICE,
+      sortType:  SortTypeEnumMode.DESC
     },
   ];
   selectedFilter: SortNavModel = this.sortNav[0];
   isCountPageListShow = false;
-  selectedCountItem: BehaviorSubject<number> = new BehaviorSubject<number>(8);
   isFilterListShow = false;
+  selectedCountItem: BehaviorSubject<number> = new BehaviorSubject<number>(8);
   filterSelected: BehaviorSubject<null> = new BehaviorSubject<null>(null);
 
   constructor() { }

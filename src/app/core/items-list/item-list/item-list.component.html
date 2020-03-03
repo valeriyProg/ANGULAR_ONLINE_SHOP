@@ -7,7 +7,8 @@
   <!--  PRODUCT LIST-->
   <div class="container wrap product-list"
        [ngClass]="{ 'row': itemListService.listView === displayMode.ROW, 'column': itemListService.listView === displayMode.COLUMN }">
-    <app-product-item  [size]="sizeMode.BIG" *ngFor="let item of data" [product]="item" class="product-item"></app-product-item>
+    <app-product-item  [size]="sizeMode.BIG" *ngFor="let item of data | productSort: itemListService.selectedFilter.sortFilter: itemListService.selectedFilter.sortType"
+                       [product]="item" class="product-item"></app-product-item>
   </div>
   <!-- LOAD SPINNER  -->
   <div class="container wrap spinner-container" *ngIf="isDataLoading">
