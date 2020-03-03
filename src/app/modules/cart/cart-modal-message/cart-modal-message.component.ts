@@ -15,7 +15,7 @@ export class CartModalMessageComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService) {  }
 
   ngOnInit() {
-    let changeSubs = this.cartService.changeCartItems.subscribe(value => {
+    let changeSubs = this.cartService.onChangeCartItems.subscribe(value => {
       if (value) {
         this.display = true;
         this.fade = true;

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './components/search/search.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';

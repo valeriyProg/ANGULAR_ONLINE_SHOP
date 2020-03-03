@@ -23,14 +23,14 @@
             <tr *ngFor="let product of cartService.loadedProducts; index as i">
               <!-- PRODUCT SCREEN TD -->
               <td *ngIf="product.brand | async as brand">
-                <a [routerLink]="['/shop/product', product.id]" routerLinkActive="$router_link-active$"
+                <a [routerLink]="['/shop-page/product', product.id]" routerLinkActive="$router_link-active$"
                    [title]="brand.name + ' ' + product.name.title" class="product-img">
                   <img [src]="product.screen | serverImage"  alt="img">
                 </a>
               </td>
               <!-- PRODUCT NAME TD -->
               <td class="name">
-                <a [routerLink]="['/shop/product', product.id]" routerLinkActive="$router_link-active$">
+                <a [routerLink]="['/shop-page/product', product.id]" routerLinkActive="$router_link-active$">
                   {{ product.name.title }}
                 </a>
                 <span *ngIf="cartService.storedItems[i].size === sizeMode.SMALL">Size: Small</span>
@@ -102,8 +102,8 @@
     </div>
     <!--  CART CONTROLS  -->
     <div class="row cart-controls space-between">
-      <a [routerLink]="['/shop']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Continue Shopping</a>
-      <a [routerLink]="['/shop/cart/checkout']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Checkout</a>
+      <a [routerLink]="['/shop-page']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Continue Shopping</a>
+      <a [routerLink]="['/shop-page/cart/checkout']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Checkout</a>
     </div>
   </div>
 </div>
@@ -115,6 +115,6 @@
     <p>Your Cart is Empty</p>
   </div>
   <div class="row empty-cart-control">
-    <a [routerLink]="['/shop']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Continue</a>
+    <a [routerLink]="['/shop-page']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Continue</a>
   </div>
 </ng-template>

@@ -8,7 +8,7 @@
   <div class="row  space-between item-info">
     <!--  IMG LIST  -->
     <div class="screen-list">
-      <app-image-list [images]="item.screen_list.length ? item.screen_list : [item.screen]" (selectedImage)="main_screen.src = $event; selectedImage($event)"></app-image-list>
+      <app-image-list [images]="item.screen_list.length ? item.screen_list : [item.screen]" (selectedImage)="main_screen.src = $event;"></app-image-list>
     </div>
     <!--  MAIN SCREEN -->
     <div class="main-img">

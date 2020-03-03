@@ -1,24 +1,11 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {ShopProductComponent} from "../pages/shop-product/shop-product.component";
+import {ShopProductComponent} from "../pages/shop-product-page/shop-product.component";
 
 const routes: Routes = [
   {
-    path: 'shop/product/:id', component: ShopProductComponent, data: { animation: 'ShopHomePage' }
+    path: 'shop-page/product/:id', component: ShopProductComponent, data: { animation: 'ShopHomePage' }
   }
-  //TODO: TO DELETE IN FUTURE
-  // {
-  //   path: 'category', component: ShopDefaultLayoutComponent,
-  //   children: [
-  //     {
-  //       path: 'products', component: ShopProductsComponent
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: 'shop/products', component: ShopProductsComponent
-  // },
-  // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

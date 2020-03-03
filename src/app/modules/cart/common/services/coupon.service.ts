@@ -23,12 +23,12 @@ export class CouponService {
 
   setCoupon(id: string): CouponStatusMessageModel {
     const couponExist = this.coupons.filter(value => value.id === id )[0];
-    if (couponExist) {
-      return this.cartService.addCoupon(couponExist);
+    if (!couponExist) {
+      return {
+        status: false,
+        message: 'Invalid coupon!'
+      };
     }
-    return {
-      status: false,
-      message: 'Invalid coupon!'
-    };
+    return this.cartService.addCoupon(couponExist);
   }
 }

@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ShopComponent} from './pages/shop/shop.component';
-import {ShopProductsComponent} from './pages/shop-products/shop-products.component';
-import {ShopProductComponent} from './pages/shop-product/shop-product.component';
+import {ShopComponent} from './pages/shop-page/shop.component';
+import {ShopProductComponent} from './pages/shop-product-page/shop-product.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
@@ -25,7 +24,6 @@ import {SpinnerModule} from "../ui/spinner/spinner.module";
 @NgModule({
   declarations: [
     ShopComponent,
-    ShopProductsComponent,
     ShopProductComponent,
     DefaultLayoutComponent,
     HomePageComponent,

@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {CategoryMenuService} from "../../common/services/category-menu.service";
-import CategoryMenuItemModel from "../../common/models/category-menu-item.model";
+import {CategoryMenuService} from "../common/services/category-menu.service";
+import CategoryMenuItemModel from "../common/models/category-menu-item.model";
 
 @Component({
   selector: 'app-category-menu',

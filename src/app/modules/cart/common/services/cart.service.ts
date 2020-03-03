@@ -11,7 +11,7 @@ import CouponStatusMessageModel from "../models/coupon-status-message.model";
 export class CartService {
   key = 'cart';
   storedItems: LocalstorageCartModel[];
-  changeCartItems: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  onChangeCartItems: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   loadedProducts: ProductFullModel[];
   ecoTaxValue = 0.02;
   vatValue = 0.2;
@@ -26,7 +26,7 @@ export class CartService {
     fromEvent(window, 'storage').subscribe(event =>{
       this.storedItems = this.getItems();
       this.loadProducts();
-      this.changeCartItems.next(true);
+      this.onChangeCartItems.next(true);
     });
   }
 
@@ -35,7 +35,8 @@ export class CartService {
     if (index != -1) {
       this.storedItems[index].count = count;
       this.storedItems[index].size = +size;
-    } else {
+    }
+    if (index === -1) {
       let item = {
         id: id,
         count: count ? count : 1,
@@ -43,10 +44,9 @@ export class CartService {
       };
       this.storedItems.push(item);
     }
-
     this.localstorageService.set(this.key, this.storedItems);
     this.loadProducts();
-    this.changeCartItems.next(true);
+    this.onChangeCartItems.next(true);
   }
 
   getStoredItem(id:string): LocalstorageCartModel {
@@ -59,20 +59,22 @@ export class CartService {
   }
 
   addCoupon(coupon: CouponModel): CouponStatusMessageModel {
-    const index = this.coupons.findIndex(value => value.id === coupon.id);
-
-    if (index != -1) {
+    if (this.isCouponExist(coupon)) {
       return {
         status: false,
         message: 'Coupon already exist'
       };
     }
-
     this.coupons.push(coupon);
     return {
       status: true,
       message: 'Coupon successful apply'
     };
+  }
+
+  isCouponExist(coupon: CouponModel): boolean {
+    let index = this.coupons.findIndex(value => value.id === coupon.id);
+    return index >= 0;
   }
 
   loadProducts(): void {
@@ -89,7 +91,7 @@ export class CartService {
     this.storedItems.splice(index, 1);
     this.loadProducts();
     this.localstorageService.set(this.key, this.storedItems);
-    this.changeCartItems.next(true);
+    this.onChangeCartItems.next(true);
   }
 
   get priceWithoutCalculating(): number {
@@ -120,10 +122,10 @@ export class CartService {
   }
 
   get itemsCount(): number {
-    let length = 0;
+    let count = 0;
     this.storedItems.forEach( item => {
-      length += item.count;
+      count += item.count;
     });
-    return length;
+    return count;
   }
 }

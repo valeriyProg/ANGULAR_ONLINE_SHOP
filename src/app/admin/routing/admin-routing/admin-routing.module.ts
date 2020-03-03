@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {DefaultLayoutComponent} from "../../pages/default-layout/default-layout.component";
-import {AdminHomeComponent} from "../../pages/admin-home/admin-home.component";
-import {AdminComponentsComponent} from "../../pages/admin-components/admin-components.component";
+import {AdminHomeComponent} from "../../pages/admin-home-page/admin-home.component";
+import {AdminComponentsComponent} from "../../pages/admin-components-page/admin-components.component";
 import {ProductToolsComponent} from "../../components/product-tools/product-tools.component";
 import {AddToolsComponent} from "../../components/add-tools/add-tools.component";
 import {MenuComponent} from "../../components/category-menu/menu.component";

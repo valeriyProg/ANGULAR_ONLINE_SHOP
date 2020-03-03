@@ -30,11 +30,13 @@ export class ProductDetailComponent implements OnInit{
       this.product = this.productService.get(this.productId);
     });
 
+    const storedProduct = this.cartService.getStoredItem(this.productId);
+
     this.addToCartForm = this.fb.group({
-      quantity: this.cartService.getStoredItem(this.productId).count
+      quantity: storedProduct ? storedProduct.count : 1
     });
 
-    this.selectedPackSize = this.cartService.getStoredItem(this.productId).size;
+    this.selectedPackSize = storedProduct ? storedProduct.size : 0
   }
 
   get quantity():number {
@@ -51,9 +53,5 @@ export class ProductDetailComponent implements OnInit{
     this.addToCartForm.patchValue({
       quantity: (this.quantity - 1) ? this.quantity - 1 : 1
     });
-  }
-
-  selectedImage(e: string) {
-    console.log(e);
   }
 }

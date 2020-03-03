@@ -1,7 +1,7 @@
 <div class="product-item"  [id]="product.id" [ngClass]="{ 'small-item': size === sizeMode.SMALL, 'big-item': size === sizeMode.BIG }">
   <!-- PRODUCT SCREEN -->
   <div class="screen">
-    <a [routerLink]="['/shop/product/', product.id]" routerLinkActive="$router_link-active$"
+    <a [routerLink]="['/shop-page/product/', product.id]" routerLinkActive="$router_link-active$"
        [ngClass]="{ 'screen-link': size === sizeMode.SMALL,'screen-link-big': size === sizeMode.BIG }">
       <img *ngIf="loaded; else spinner" [src]="size === sizeMode.SMALL ? (product.screen | serverImage) : (product.screen_big | serverImage)"
            alt="screen" class="item-img">
