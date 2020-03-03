@@ -7,7 +7,7 @@ import {SortFilterEnum} from "../../../../core/items-list/common/enums/sort-filt
   name: 'productSort'
 })
 export class ProductSortPipe implements PipeTransform {
-
+  //TODO: REPLACE SOME FUNCTIONAL TO STRATEGY
   transform(value: ProductFullModel[], filter: SortFilterEnum, sortMode: SortTypeEnumMode): ProductFullModel[] {
     if (!value) {
       return ;
