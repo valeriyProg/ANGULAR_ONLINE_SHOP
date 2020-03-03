@@ -6,7 +6,7 @@
     <a href="#" class="cart-link" [ngClass]="{ 'selected': true }" (click)="$event.preventDefault(); display = !display" >
       <i class="fl-bigmug-line-shopping198"></i>
       <span>My Cart {{ cartService.itemsCount }}</span>
-      <span>&pound;{{ cartService.calculatedFullPrice | productPrice }}</span>
+      <span>&pound;{{ calculationService.calculatedFullPrice | productPrice }}</span>
     </a>
     <div class="cart-list-wrapper" [ngClass]="{ 'display': display, 'hide': !display }">
       <app-small-cart *ngIf="cartService.storedItems.length; else empty_list" class="cart-list" (navigated)="display = false"></app-small-cart>

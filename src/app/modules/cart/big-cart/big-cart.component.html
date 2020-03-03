@@ -5,7 +5,7 @@
   <div class="cart-content">
     <div class="row">
       <div class="cart-table">
-        <div class="cart-table-inner">
+        <div class="cart-table-inner cart-table-default">
           <table>
             <!--  TABLE HEAD   -->
             <thead>
@@ -41,8 +41,11 @@
               <td>Model</td>
               <td class="quantity">
                 <div class="quantity-inner row">
-                  <input type="text" class="count-input" [value]="cartService.storedItems[i].count">
-                  <button type="button" class="delete-btn" (click)="cartService.deleteItem(product.id)">
+                  <input type="number" min="1" class="count-input" #input [value]="cartService.storedItems[i].count">
+                  <button type="button" class="form-btn" (click)="setCount(input, i)">
+                    <i class="fa fa-check"></i>
+                  </button>
+                  <button type="button" class="form-btn delete-btn" (click)="cartService.deleteItem(product.id)">
                     <i class="fa fa-times-circle"></i>
                   </button>
                 </div>
@@ -77,28 +80,7 @@
     </div>
     <!--  CALCULATED PRICE INFO  -->
     <div class="calculation-info">
-      <div class="calculation-table">
-        <table>
-          <tbody>
-          <tr>
-            <td><strong>Sub-Total:</strong></td>
-            <td>${{ cartService.priceWithoutCalculating | productPrice }}</td>
-          </tr>
-          <tr>
-            <td><strong>Eco Tax (-{{ cartService.ecoTaxValue * 100 | productPrice }}):</strong></td>
-            <td>${{ cartService.calculatedEcoTax | productPrice }}</td>
-          </tr>
-          <tr>
-            <td><strong>VAT ({{ cartService.vatValue * 100 | productPrice }}%):</strong></td>
-            <td>${{ cartService.calculatedVat | productPrice }}</td>
-          </tr>
-          <tr>
-            <td><strong>Total:</strong></td>
-            <td>${{ cartService.calculatedFullPrice | productPrice }}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+      <app-calculation-table></app-calculation-table>
     </div>
     <!--  CART CONTROLS  -->
     <div class="row cart-controls space-between">

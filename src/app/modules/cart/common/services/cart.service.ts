@@ -49,6 +49,16 @@ export class CartService {
     this.onChangeCartItems.next(true);
   }
 
+  setCount(value: number, index: number) {
+    if (value <= 0) {
+      this.storedItems[index].count = 1;
+      this.localstorageService.set(this.key, this.storedItems);
+      return;
+    }
+    this.storedItems[index].count = value;
+    this.localstorageService.set(this.key, this.storedItems);
+  }
+
   getStoredItem(id:string): LocalstorageCartModel {
     const index = this.storedItems.findIndex(item=> item.id === id);
     return this.storedItems[index];
@@ -92,33 +102,6 @@ export class CartService {
     this.loadProducts();
     this.localstorageService.set(this.key, this.storedItems);
     this.onChangeCartItems.next(true);
-  }
-
-  get priceWithoutCalculating(): number {
-    let price = 0;
-    this.loadedProducts.forEach((value, index) => {
-      price += value.price * this.storedItems[index].count;
-    });
-    return price;
-  }
-
-  get calculatedEcoTax() : number {
-    return this.priceWithoutCalculating * this.ecoTaxValue;
-  }
-
-  get calculatedVat(): number {
-    return this.priceWithoutCalculating * this.vatValue;
-  }
-
-  get calculatedFullPrice(): number {
-    if (this.coupons.length) {
-      let price = this.priceWithoutCalculating;
-      this.coupons.forEach(value => {
-        price = price - (value.discount * price);
-      });
-      return  price + this.calculatedVat + this.calculatedEcoTax;
-    }
-    return this.priceWithoutCalculating + this.calculatedVat + this.calculatedEcoTax;
   }
 
   get itemsCount(): number {

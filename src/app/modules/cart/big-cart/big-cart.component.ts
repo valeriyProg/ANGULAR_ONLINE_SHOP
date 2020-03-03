@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CartService} from "../common/services/cart.service";
 import ProductContract from "../../product/common/contracts/product.contract";
 import {ProductSizeEnum} from "../../product/common/enums/product-size.enum";
-import CouponModel from "../common/models/coupon.model";
+import {LocalstorageService} from "../../product/common/services/localstorage.service";
 
 @Component({
   selector: 'app-big-cart',
@@ -11,11 +11,16 @@ import CouponModel from "../common/models/coupon.model";
 })
 export class BigCartComponent implements OnInit {
   sizeMode = ProductSizeEnum;
-  appliedCoupon: CouponModel;
 
   constructor(private cartService: CartService,
-              private productService: ProductContract) { }
+              private productService: ProductContract,
+              private localstorageService: LocalstorageService) { }
 
   ngOnInit() { }
 
+  setCount(input: HTMLInputElement, i: number) {
+    const value = parseInt(input.value);
+    this.cartService.setCount(value, i);
+    input.value = (this.cartService.storedItems[i].count).toString();
+  }
 }

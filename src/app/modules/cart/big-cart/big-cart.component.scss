@@ -32,56 +32,6 @@ mat-divider {
   margin: 12px 0 25px;
 }
 
-table {
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 0;
-  border-spacing: 0;
-  border-collapse: collapse;
-  font: 400 14px/21px "Raleway", sans-serif;
-  color: #485154;
-
-  span {
-    display: block;
-    width: 100%;
-    text-decoration: none;
-    font: 400 14px/21px "Raleway", sans-serif;
-    color: inherit;
-  }
-
-  thead {
-    td {
-      text-transform: uppercase;
-    }
-  }
-
-  .text-center {
-    text-align: center;
-  }
-
-  .text-right {
-    text-align: right;
-  }
-
-  td {
-    border: 1px solid #ddd;
-    //text-transform: uppercase;
-    color: #292929;
-    font: 600 13px 'Raleway', sans-serif;
-    background-color: #f9f9f9;
-    border-top: 0;
-    padding: 10px;
-  }
-
-  tbody {
-    td {
-      background: #ffffff;
-    }
-  }
-}
-
 .product-img {
   display: block;
   width: 50px;
@@ -128,26 +78,28 @@ table {
   }
 }
 
-.delete-btn {
+.form-btn {
   display: block;
   height: 46px;
-  border-radius: 0 18px 18px 0;
   overflow: hidden;
   text-transform: uppercase;
   padding: 5px 29px;
   font: 600 12px/25px 'Raleway', sans-serif;
   color: #fff;
-  transition: all 0.4s ease;
   background: #fd9148;
   letter-spacing: 1.4px;
   border: none;
   outline: none;
-  outline-offset: 0;
   cursor: pointer;
+  transition: all 0.4s ease;
 
   &:hover {
     background: #000000;
   }
+}
+
+.delete-btn {
+  border-radius: 0 18px 18px 0;
 }
 
 .count-input {
@@ -160,21 +112,5 @@ table {
 
   &:focus {
     outline:1px solid #dddddd;
-  }
-}
-
-.calculation-table {
-
-  table {
-    margin: 20px 0 10px auto;
-    max-width: 350px;
-
-    td {
-      text-align: right;
-
-      &:first-child {
-        font-weight: 600;
-      }
-    }
   }
 }

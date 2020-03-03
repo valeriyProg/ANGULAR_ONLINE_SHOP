@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {fromEvent} from 'rxjs';
 import {CartService} from "../../../../modules/cart/common/services/cart.service";
+import {CalculationService} from "../../../../modules/cart/common/services/calculation.service";
 
 @Component({
   selector: 'app-toolbar',
@@ -12,7 +13,8 @@ export class ToolbarComponent implements AfterViewInit {
   display = false;
   onListHover = false;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService,
+              private calculationService: CalculationService) {}
 
   ngAfterViewInit(): void {
     fromEvent(document, 'click').subscribe( event =>  {

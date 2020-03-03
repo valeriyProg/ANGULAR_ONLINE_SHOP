@@ -33,19 +33,19 @@
         <div class="product-info">
           <div class="sub-total row space-between">
             <span>Sub Total</span>
-            <span>&pound;{{ cartService.priceWithoutCalculating | productPrice}}</span>
+            <span>&pound;{{ calculationService.priceWithoutCalculating | productPrice}}</span>
           </div>
           <div class="eco row space-between">
             <span>Eco Tax(-{{ cartService.ecoTaxValue * 100 | productPrice }})</span>
-            <span>&pound;{{ cartService.calculatedEcoTax | productPrice}}</span>
+            <span>&pound;{{ calculationService.calculatedEcoTax | productPrice}}</span>
           </div>
           <div class="vat row space-between">
             <span>VAT({{ cartService.vatValue * 100 }}%)</span>
-            <span>&pound;{{ cartService.calculatedVat | productPrice}}</span>
+            <span>&pound;{{ calculationService.calculatedVat | productPrice}}</span>
           </div>
           <div class="total row space-between">
             <span>Total</span>
-            <span>&pound;{{ cartService.calculatedFullPrice | productPrice }}</span>
+            <span>&pound;{{ calculationService.calculatedFullPrice | productPrice }}</span>
           </div>
         </div>
         <!--   CART NAVIGATION CONTROLS   -->

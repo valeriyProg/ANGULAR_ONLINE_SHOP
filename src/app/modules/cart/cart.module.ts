@@ -14,6 +14,9 @@ import { CartModalMessageComponent } from './cart-modal-message/cart-modal-messa
 import {SpinnerModule} from "../../ui/spinner/spinner.module";
 import { CouponPanelItemComponent } from './coupon-panel-item/coupon-panel-item.component';
 import {CouponService} from "./common/services/coupon.service";
+import {FormsModule} from "@angular/forms";
+import { CalculationTableComponent } from './calculation-table/calculation-table.component';
+import {CalculationService} from "./common/services/calculation.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import {CouponService} from "./common/services/coupon.service";
     CartAccordionComponent,
     AddToCartModalComponent,
     CartModalMessageComponent,
-    CouponPanelItemComponent
+    CouponPanelItemComponent,
+    CalculationTableComponent
   ],
   imports: [
     CommonModule,
@@ -31,11 +35,13 @@ import {CouponService} from "./common/services/coupon.service";
     RouterModule,
     ProductModule,
     MatDividerModule,
-    SpinnerModule
+    SpinnerModule,
+    FormsModule
   ],
   providers: [
     CartService,
-    CouponService
+    CouponService,
+    CalculationService
   ],
   exports: [
     SmallCartComponent,

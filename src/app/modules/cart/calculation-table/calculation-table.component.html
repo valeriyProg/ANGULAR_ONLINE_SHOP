@@ -1,0 +1,22 @@
+<div class="calculation-table cart-table-default">
+  <table>
+    <tbody>
+    <tr>
+      <td><strong>Sub-Total:</strong></td>
+      <td>${{ calculationService.priceWithoutCalculating | productPrice }}</td>
+    </tr>
+    <tr>
+      <td><strong>Eco Tax (-{{ cartService.ecoTaxValue * 100 | productPrice }}):</strong></td>
+      <td>${{ calculationService.calculatedEcoTax | productPrice }}</td>
+    </tr>
+    <tr>
+      <td><strong>VAT ({{ cartService.vatValue * 100 | productPrice }}%):</strong></td>
+      <td>${{ calculationService.calculatedVat | productPrice }}</td>
+    </tr>
+    <tr>
+      <td><strong>Total:</strong></td>
+      <td>${{ calculationService.calculatedFullPrice | productPrice }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

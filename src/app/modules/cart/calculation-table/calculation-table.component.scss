@@ -1,0 +1,14 @@
+.calculation-table {
+  table {
+    margin: 20px 0 10px auto;
+    max-width: 350px;
+
+    td {
+      text-align: right;
+
+      &:first-child {
+        font-weight: 600;
+      }
+    }
+  }
+}
