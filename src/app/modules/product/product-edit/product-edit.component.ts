@@ -44,7 +44,7 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(value =>  {
-      this.productId = value.get('id');
+      this.productId = value.get('id') || '0';
       this.initForm(this.productId);
     });
 
@@ -103,7 +103,7 @@ export class ProductEditComponent implements OnInit {
         });
       });
       this.screen = data.screen;
-      this.productEditService.selectedProduct.next(this.productId);
+      this.productEditService.onSelectedProduct.next(this.productId);
     });
   }
 
@@ -116,7 +116,7 @@ export class ProductEditComponent implements OnInit {
   submit() {
     const data = this.formDataService.formGroupToFormData(this.editForm);
     const result = this.productService.update(this.productId, data).subscribe(res=> {
-      this.productEditService.selectedProduct.next(this.productId);
+      this.productEditService.onSelectedProduct.next(this.productId);
     });
   }
 }

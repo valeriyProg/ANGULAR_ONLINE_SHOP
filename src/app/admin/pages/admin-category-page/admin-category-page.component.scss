@@ -6,9 +6,9 @@
 
 .category-item {
   display: block;
-  margin: 15px 0;
+  margin: 0 0 15px;
 
   &:not(:first-child) {
-    margin: 15px 15px 15px 0;
+    margin: 0 15px 15px 0;
   }
 }

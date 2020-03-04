@@ -13,7 +13,7 @@ const adminRoutes: Routes = [
     path: 'admin', component: DefaultLayoutComponent, data: { animation: 'AdminPanel' },
     children: [
       {
-        path: '', redirectTo: 'dashboard', pathMatch: 'full'
+        path: '', redirectTo: 'components/product-add', pathMatch: 'full'
       },
       {
         path: 'dashboard', component: AdminHomeComponent, data: { animation: 'AdminHome' }

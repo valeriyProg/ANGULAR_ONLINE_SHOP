@@ -30,11 +30,8 @@ export class ItemListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(value => {
-        if (value.get('category')) {
-          this.categoryId = value.get('category');
-        } else {
-          this.categoryId = 0;
-        }
+        this.categoryId = value.get('category') || 0;
+
         this.http.get<CategoryDataModel>(`http://localhost:3000/category/${this.categoryId}`).subscribe( info=> {
           const index = this.itemListService.selectedCountIndex;
           this.params = {};

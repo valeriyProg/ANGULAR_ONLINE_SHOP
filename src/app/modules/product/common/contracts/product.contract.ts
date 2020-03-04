@@ -8,5 +8,5 @@ export default abstract class ProductContract {
   abstract getList(query?:{}): Observable<ProductFullModel[]>;
   abstract add(data: FormData): Observable<ProductModel>;
   abstract update(id: string, data: FormData): Observable<ProductFullModel>;
-  abstract delete(id: string): void;
+  abstract delete(id: string): Observable<void>;
 }

@@ -15,7 +15,7 @@ export class PreviewComponent  {
   upload():void {
     this.categoryService.onUploadList.next(true);
     if(this.productId) {
-      this.productEditService.selectedProduct.next(this.productId);
+      this.productEditService.onSelectedProduct.next(this.productId);
     }
   }
 }

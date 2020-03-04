@@ -19,7 +19,7 @@ export class ProductToolsComponent implements OnInit, OnDestroy {
               private productEditService: ProductEditService) { }
 
   ngOnInit() {
-    let subs = this.productEditService.selectedProduct.subscribe(data=> {
+    let subs = this.productEditService.onSelectedProduct.subscribe(data=> {
       if (data) {
         this.initElement(data);
       }

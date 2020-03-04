@@ -79,9 +79,8 @@ export class ApiService extends ProductContract{
     );
   }
 
-  delete(id: string): void {
-    //TODO: TO REALIZED IN FUTURE
-    throw new Error("Method not implemented.");
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.url}products/${id}`);
   }
 
 }

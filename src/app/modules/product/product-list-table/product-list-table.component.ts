@@ -39,10 +39,8 @@ export class ProductListTableComponent implements OnInit, OnDestroy {
   }
 
   deleteItem(id:string) {
-    //TODO: NOT REALIZED YET
-    // this.productService.delete(id).subscribe(res => {
-    //   this.addToolsService.apiRequested.next(null);
-    // });
+    this.productService.delete(id).subscribe(value => { });
+    this.addToolsService.onApiRequested.next(null);
   }
 
   applyFilter(e: Event) {
