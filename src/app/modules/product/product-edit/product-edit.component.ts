@@ -13,6 +13,7 @@ import {ProductEditService} from "../common/services/product-edit.service";
 import {FormDataService} from "../../form-data/common/services/form-data.service";
 import PromoModel from "../../promo/common/models/promo.model";
 import {PromoService} from "../../promo/common/services/promo.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-product-edit',
@@ -38,9 +39,15 @@ export class ProductEditComponent implements OnInit {
               private chocolateTypeService: ChocolateTypeService,
               private productEditService: ProductEditService,
               private fb: FormBuilder,
-              private formDataService: FormDataService) { }
+              private formDataService: FormDataService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.paramMap.subscribe(value =>  {
+      this.productId = value.get('id');
+      this.initForm(this.productId);
+    });
+
     this.editForm = this.fb.group({
       name: '',
       brand_id: undefined,

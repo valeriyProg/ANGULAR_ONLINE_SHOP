@@ -45,7 +45,8 @@
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <app-edit-item-btn class="delete-btn " (click)="deleteItem(element.id)"></app-edit-item-btn>
+          <app-edit-item-btn class="delete-btn " [routerLink]="['/admin/components/product-editor', element.id]"
+                             routerLinkActive="$router_link-active$"></app-edit-item-btn>
         </td>
       </ng-container>
       <!--   TABLE COLUMN: DELETE    -->

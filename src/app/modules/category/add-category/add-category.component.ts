@@ -52,6 +52,7 @@ export class AddCategoryComponent implements OnInit {
      this.prepareData(data).then(value => {
       this.categoryService.add(data).subscribe(res=> { });
       this.initForm();
+      this.categoryAdded.emit(true);
     });
   }
 

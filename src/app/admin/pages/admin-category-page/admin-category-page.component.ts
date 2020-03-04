@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from "../../../modules/category/common/services/category.service";
-import {Observable} from "rxjs";
 import CategoryDataModel from "../../../modules/category/common/models/category-data.model";
 
 @Component({
@@ -18,7 +17,8 @@ export class AdminCategoryPageComponent implements OnInit {
    });
   }
 
-  loadItems() {
+  loadItems($event: boolean) {
+    this.categories = [];
     this.categoryService.list().subscribe(value => {
       this.categories = value;
     });

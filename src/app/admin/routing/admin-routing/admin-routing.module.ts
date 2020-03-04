@@ -23,6 +23,7 @@ const adminRoutes: Routes = [
         children: [
           { path: 'menu-editor', component: MenuComponent, data: { animation: 'AdminMenuEditor' } },
           { path: 'product-editor', component: ProductToolsComponent, data: { animation: 'AdminProductEditor' } },
+          { path: 'product-editor/:id', component: ProductToolsComponent, data: { animation: 'AdminProductEditor' } },
           { path: 'product-add', component: AddToolsComponent, data: { animation: 'AdminProductAdd' } },
           { path: 'categories', component: AdminCategoryPageComponent, data: { animation: 'AdminProductAdd' } },
 
