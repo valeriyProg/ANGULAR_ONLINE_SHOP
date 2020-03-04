@@ -3,23 +3,8 @@
     <app-road-nav [selectedCategoryTitle]="categoryData.name"></app-road-nav>
   </div>
 </div>
-<!-- CATEGORY HEADER -->
-<div class="header row">
-  <div class="container space-between" *ngIf="categoryData">
-    <h2>{{ categoryData.name }}</h2>
-    <div class="row space-between">
-      <!--   CATEGORY IMG    -->
-      <div class="col">
-        <img [src]="categoryData.screen" alt="screen" class="category-img">
-      </div>
-      <!--   CATEGORY DESCRIPTION  -->
-      <div class="col">
-        <p *ngFor="let item of categoryData.description" [innerHTML] = "item" class="category-text"></p>
-      </div>
-    </div>
-    <mat-divider></mat-divider>
-  </div>
-</div>
+<!-- CATEGORY DESCRIPTION -->
+<app-category-description [categoryData]="categoryData" ></app-category-description>
 <div class="row category-list" *ngIf="categories | async | categorySort:'home' as items">
   <div class="container row">
     <app-category-item *ngFor="let item of items" [categoryItem]="item" class="category-item"></app-category-item>

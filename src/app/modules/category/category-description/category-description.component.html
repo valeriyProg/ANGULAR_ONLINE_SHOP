@@ -1,0 +1,16 @@
+<div class="header row">
+  <div class="container space-between" *ngIf="categoryData">
+    <h2>{{ categoryData.name }}</h2>
+    <div class="row space-between">
+      <!--   CATEGORY IMG    -->
+      <div class="col">
+        <img [src]="categoryData.screen" alt="screen" class="category-img">
+      </div>
+      <!--   CATEGORY DESCRIPTION  -->
+      <div class="col">
+        <p *ngFor="let item of categoryData.description" [innerHTML] = "item" class="category-text"></p>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+</div>

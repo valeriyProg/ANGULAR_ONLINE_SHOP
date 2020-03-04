@@ -6,10 +6,7 @@ import {ImageModule} from "../image/image.module";
 import {ButtonsModule} from "../../ui/buttons/buttons.module";
 import {RouterModule} from "@angular/router";
 import {ProductModule} from "../product/product.module";
-import { BigCartComponent } from './big-cart/big-cart.component';
 import {MatDividerModule} from "@angular/material/divider";
-import { CartAccordionComponent } from './cart-accordion/cart-accordion.component';
-import { AddToCartModalComponent } from './add-to-cart-modal/add-to-cart-modal.component';
 import { CartModalMessageComponent } from './cart-modal-message/cart-modal-message.component';
 import {SpinnerModule} from "../../ui/spinner/spinner.module";
 import { CouponPanelItemComponent } from './coupon-panel-item/coupon-panel-item.component';
@@ -17,16 +14,16 @@ import {CouponService} from "./common/services/coupon.service";
 import {FormsModule} from "@angular/forms";
 import { CalculationTableComponent } from './calculation-table/calculation-table.component';
 import {CalculationService} from "./common/services/calculation.service";
+import {ModalService} from "./common/services/modal.service";
+import { CartTableComponent } from './cart-table/cart-table.component';
 
 @NgModule({
   declarations: [
     SmallCartComponent,
-    BigCartComponent,
-    CartAccordionComponent,
-    AddToCartModalComponent,
     CartModalMessageComponent,
     CouponPanelItemComponent,
-    CalculationTableComponent
+    CalculationTableComponent,
+    CartTableComponent,
   ],
   imports: [
     CommonModule,
@@ -41,12 +38,15 @@ import {CalculationService} from "./common/services/calculation.service";
   providers: [
     CartService,
     CouponService,
-    CalculationService
+    CalculationService,
+    ModalService
   ],
   exports: [
     SmallCartComponent,
-    BigCartComponent,
-    CartModalMessageComponent
+    CartModalMessageComponent,
+    CouponPanelItemComponent,
+    CalculationTableComponent,
+    CartTableComponent,
   ]
 })
 export class CartModule { }

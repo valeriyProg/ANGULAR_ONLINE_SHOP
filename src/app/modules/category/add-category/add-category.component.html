@@ -1,0 +1,56 @@
+<div class="add-category">
+  <!--  CATEGORY ADD FORM  -->
+  <div class="add-form">
+    <form [formGroup]="addForm" (ngSubmit)="submit()">
+      <div class="column form-inner">
+        <app-screen-uploader (selectImage)="selectedImage($event)"></app-screen-uploader>
+        <!--   FORM TEXT INPUT: NAME       -->
+        <mat-form-field class="name-field">
+          <label>
+            <input matInput [formControlName]="'name'"  placeholder="Name:">
+          </label>
+        </mat-form-field>
+        <!--    FILTER GROUP    -->
+        <div class="category-group row space-between" >
+          <!--   FORM INPUT SELECT: PACK TYPE       -->
+          <mat-form-field   *ngIf="packType | async as packs">
+            <div class="row">
+              <label class="label">Pack:</label>
+              <mat-select [formControlName]="'packType_id'">
+                <mat-option [value]="-1">
+                  No Filter
+                </mat-option>
+                <mat-option *ngFor="let pack of packs" [value]="pack.id">
+                  {{pack.name}}
+                </mat-option>
+              </mat-select>
+            </div>
+          </mat-form-field>
+          <!--   FORM INPUT SELECT: CHOCOLATE TYPES    -->
+          <mat-form-field  *ngIf="chocolateType | async as chocolateType">
+            <div class="row">
+              <label class="label">Type:</label>
+              <mat-select [formControlName]="'chocolateType_id'">
+                <mat-option [value]="-1">
+                  No Filter
+                </mat-option>
+                <mat-option *ngFor="let type of chocolateType" [value]="type.id">
+                  {{type.name}}
+                </mat-option>
+              </mat-select>
+            </div>
+          </mat-form-field>
+        </div>
+        <!--    DESCRIPTION    -->
+        <mat-form-field class="description-field" appearance="fill">
+          <mat-label>Description:</mat-label>
+          <textarea matInput [formControlName]="'description'"></textarea>
+        </mat-form-field>
+        <!--    FORM SUBMIT BUTTOn    -->
+        <div class="controls-group">
+          <button mat-button type="submit">Add Category</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

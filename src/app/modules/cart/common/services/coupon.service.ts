@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import CouponModel from "../models/coupon.model";
-import {CartService} from "./cart.service";
 import CouponStatusMessageModel from "../models/coupon-status-message.model";
 
 @Injectable( )
@@ -18,17 +17,41 @@ export class CouponService {
     id: '555-555',
     discount: 0.25
   }];
+  userCoupons: CouponModel[] = [];
 
-  constructor(private cartService: CartService) { }
+  constructor() { }
 
   setCoupon(id: string): CouponStatusMessageModel {
-    const couponExist = this.coupons.filter(value => value.id === id )[0];
-    if (!couponExist) {
+    if (this.isCouponExist(id) && this.isCouponAlreadyApplied(id)) {
+      return {
+        status: false,
+        message: 'Coupon already exist'
+      };
+    }
+
+    if (!this.isCouponExist(id)) {
       return {
         status: false,
         message: 'Invalid coupon!'
       };
     }
-    return this.cartService.addCoupon(couponExist);
+
+    let index = this.coupons.findIndex(value => value.id === id);
+    this.userCoupons.push(this.coupons[index]);
+
+    return {
+      status: true,
+      message: 'Coupon successful apply'
+    };
+  }
+
+  isCouponExist(id: string): boolean {
+    let index = this.coupons.findIndex(value => value.id === id);
+    return index >= 0;
+  }
+
+  isCouponAlreadyApplied(id: string):  boolean {
+    let index = this.userCoupons.findIndex(value => value.id === id);
+    return index >= 0;
   }
 }

@@ -14,6 +14,7 @@ import {MenuEditorService} from "./common/services/menu-editor.service";
 import {SvgIconModule} from "../../ui/svg-icon/svg-icon.module";
 import {SubmenuListPanelComponent} from './submenu-list-panel/submenu-list-panel.component';
 import {CategoryMenuModule} from "../../core/category-menu/category-menu.module";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {CategoryMenuModule} from "../../core/category-menu/category-menu.module"
     MatInputModule,
     ReactiveFormsModule,
     SvgIconModule,
-    CategoryMenuModule
+    CategoryMenuModule,
+    MatSelectModule
   ],
   providers: [
     MenuEditorService,

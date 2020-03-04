@@ -58,6 +58,7 @@ export class ProductDetailDescriptionComponent implements OnInit {
     this.loading = true;
     const data = this.formDataService.formGroupToFormData(this.reviewForm);
     this.contentDescriptionService.add(data).subscribe();
+
     this.descriptionObservable.subscribe(value => {
       this.description = value;
       this.initForm();

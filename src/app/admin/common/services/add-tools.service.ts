@@ -3,7 +3,5 @@ import {BehaviorSubject} from "rxjs";
 
 @Injectable()
 export class AddToolsService {
-  apiRequested: BehaviorSubject<null> = new BehaviorSubject<null>(null);
-
-  constructor() { }
+  onApiRequested: BehaviorSubject<null> = new BehaviorSubject<null>(null);
 }

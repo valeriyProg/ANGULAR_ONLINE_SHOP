@@ -16,7 +16,7 @@ export class CategoryMenuComponent implements OnInit, OnDestroy {
   constructor(private http: HttpClient, private categoryService: CategoryMenuService) { }
 
   ngOnInit() {
-    let subs = this.categoryService.uploadListSubject.subscribe(value=>{
+    let subs = this.categoryService.onUploadList.subscribe(value=>{
       this.render();
     });
     this.subscriptions.push(subs);

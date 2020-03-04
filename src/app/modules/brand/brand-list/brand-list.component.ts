@@ -27,7 +27,7 @@ export class BrandListComponent implements OnInit, OnDestroy {
       this.dataSource.paginator = this.paginator;
     });
 
-    let requestedSubs = this.addToolsService.apiRequested.subscribe(value => {
+    let requestedSubs = this.addToolsService.onApiRequested.subscribe(value => {
       this.brandService.list().subscribe(data=> {
         this.brandList = data;
         this.dataSource.data = data;
@@ -40,7 +40,7 @@ export class BrandListComponent implements OnInit, OnDestroy {
 
   deleteItem(id:string) {
     this.brandService.delete(id).subscribe(res => {
-      this.addToolsService.apiRequested.next(null);
+      this.addToolsService.onApiRequested.next(null);
     });
   }
 

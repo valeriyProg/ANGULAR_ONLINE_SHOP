@@ -5,10 +5,12 @@ import CategorySubMenuModel from "../../../../core/category-menu/common/models/c
 
 @Injectable()
 export class MenuEditorService {
+  //
   //TODO: SPLIT FUNCTIONAL ON FEW SERVICES
-  dataLoaded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  changeItem: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  openSubmenuEditForm: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  //
+  onDataLoaded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  onChangeItem: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  onOpenSubmenuEditForm: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   menuData: CategoryMenuItemModel[];
   tempSubmenu: CategorySubMenuModel;
   selectedItemIndex: number = 0;
@@ -31,7 +33,7 @@ export class MenuEditorService {
     setTimeout(()=> {
       this.selectedItemIndex = selectedItemIndex;
       this.isEditorContainerExpanded = true;
-      this.changeItem.next(true);
+      this.onChangeItem.next(true);
     },510);
   }
 
@@ -67,7 +69,7 @@ export class MenuEditorService {
     e.preventDefault();
     this.menuData.push({
       id: 'test-id',
-      name: { title: 'Click to configuration', link: 'default-item'},
+      name: { title: 'Click to configuration', link: 'default-item', params: { category: 0 }},
       icon: '',
       submenu: []
     });

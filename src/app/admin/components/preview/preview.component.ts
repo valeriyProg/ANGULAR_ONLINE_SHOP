@@ -13,7 +13,7 @@ export class PreviewComponent  {
               private productEditService: ProductEditService) { }
 
   upload():void {
-    this.categoryService.uploadListSubject.next(true);
+    this.categoryService.onUploadList.next(true);
     if(this.productId) {
       this.productEditService.selectedProduct.next(this.productId);
     }

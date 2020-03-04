@@ -6,8 +6,8 @@
   <!--  CONTENT BLOCK  -->
   <div class="content" [ngClass]="{'content-expanded': this.asideBarService.collapseMenu,
                                     'content-default-size': !this.asideBarService.collapseMenu}">
-    <div class="content-inner">
-      <router-outlet></router-outlet>
+    <div class="content-inner" [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
     </div>
     <footer>FOOTER</footer>
   </div>

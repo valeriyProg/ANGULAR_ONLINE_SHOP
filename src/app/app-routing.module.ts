@@ -9,19 +9,19 @@ import {CartPageComponent} from "./client/pages/cart-page/cart-page.component";
 
 const routes: Routes = [
   {
-    path: '', component: DefaultLayoutComponent,
+    path: '', component: DefaultLayoutComponent,  data: { animation: 'ShopProduct' },
     children: [
       {
         path: '', component: HomePageComponent, data: { animation: 'HomePage' }
       },
       {
-        path: 'shop-page', component: ShopComponent, data: { animation: 'ShopHomePage' }
+        path: 'shop', component: ShopComponent, data: { animation: 'ShopHomePage' }
       },
       {
-        path: 'shop-page/product/:id', component: ShopProductComponent ,
+        path: 'shop/product/:id', data: { animation: 'ShopProduct' }, component: ShopProductComponent ,
       },
       {
-        path: 'shop-page/cart', component: CartPageComponent,
+        path: 'shop/cart', data: { animation: 'CartPage' }, component: CartPageComponent,
       }
     ]
   },

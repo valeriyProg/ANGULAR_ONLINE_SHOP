@@ -27,6 +27,20 @@
           </label>
         </mat-form-field>
       </li>
+
+      <li class="config-list-item">
+        <mat-form-field class="link-name-input" *ngIf="categories | async as categoryList">
+          <div class="row">
+            <label class="brand-label">Category:</label>
+            <mat-select [formControlName]="'category'">
+              <mat-option [id]="item.id" *ngFor="let item of categoryList" [value]="+item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+          </div>
+        </mat-form-field>
+      </li>
+
       <!--  SUBMENU CHECKBOX FORM INPUT   -->
       <li class="config-list-item">
         <label>

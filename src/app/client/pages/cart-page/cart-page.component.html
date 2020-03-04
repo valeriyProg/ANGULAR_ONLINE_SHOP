@@ -1,10 +1,54 @@
 <div class="row">
   <div class="container">
-    <app-road-nav [selectedCategoryTitle]="'Shop Cart'"></app-road-nav>
+    <app-road-nav [selectedCategoryTitle]="'Shopping Cart'"></app-road-nav>
   </div>
 </div>
 <div class="row">
   <div class="container">
-    <app-big-cart></app-big-cart>
+    <div class="big-cart" *ngIf="cartService.loadedProducts.length > 0; else empty_cart">
+      <h1>Use gift certificate</h1>
+      <mat-divider></mat-divider>
+      <!--  CART PRODUCT TABLE  -->
+      <div class="cart-content">
+        <div class="row">
+          <app-cart-table class="cart-table"></app-cart-table>
+        </div>
+        <!--  CART COUPONS INFO  -->
+        <div class="column">
+          <h2>What would you like to do next?</h2>
+          <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+          <div class="panel-group">
+            <!--   COUPON PANEL    -->
+            <app-coupon-panel-item [expanded]="true" [type]="'coupon'">
+              <span class="coupon-text">Use coupon code</span>
+            </app-coupon-panel-item>
+            <!--   COUPON PANEL    -->
+            <app-coupon-panel-item [expanded]="false" [type]="'certificate'">
+              <span class="coupon-text">Use gift certificate</span>
+            </app-coupon-panel-item>
+          </div>
+        </div>
+        <!--  CALCULATED PRICE INFO  -->
+        <div class="calculation-info">
+          <app-calculation-table></app-calculation-table>
+        </div>
+        <!--  CART CONTROLS  -->
+        <div class="row cart-controls space-between">
+          <a [routerLink]="['/shop-page']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Continue Shopping</a>
+          <a [routerLink]="['/shop-page/cart/checkout']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Checkout</a>
+        </div>
+      </div>
+    </div>
+    <!-- EMPTY CART TEMPLATE -->
+    <ng-template #empty_cart>
+      <h1>Shopping Cart</h1>
+      <mat-divider></mat-divider>
+      <div class="row">
+        <p>Your Cart is Empty</p>
+      </div>
+      <div class="row empty-cart-control">
+        <a [routerLink]="['/shop-page']" routerLinkActive="$router_link-active$" class="add-to-cart-button">Continue</a>
+      </div>
+    </ng-template>
   </div>
 </div>

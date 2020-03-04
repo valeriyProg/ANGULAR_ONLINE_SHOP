@@ -1,0 +1,49 @@
+.big-cart {
+  padding: 0 0 50px;
+}
+
+p {
+  margin: 0 0 10px;
+  font: 400 14px/21px "Raleway", sans-serif;
+}
+
+h1, h2  {
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 0;
+  margin-top: 30px;
+  color: #3d454c;
+  font-weight: bold;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 0 0 20px;
+}
+
+
+mat-divider {
+  display: block;
+  margin: 12px 0 25px;
+}
+
+.cart-table {
+  display: block;
+  width: 100%;
+}
+
+.empty-cart-control {
+  padding: 0 0 40px;
+
+  a {
+    margin-left: auto;
+  }
+}
+
+.add-to-cart-button {
+  text-decoration: none;
+  width: auto;
+  text-align: center;
+}

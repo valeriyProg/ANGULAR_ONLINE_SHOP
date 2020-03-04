@@ -1,7 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MenuEditorService} from "../common/services/menu-editor.service";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
+import CategoryDataModel from "../../category/common/models/category-data.model";
+import {CategoryService} from "../../category/common/services/category.service";
 
 @Component({
   selector: 'app-menu-item-editor',
@@ -11,16 +13,21 @@ import {Subscription} from "rxjs";
 export class MenuItemEditorComponent implements OnInit, OnDestroy {
   menuItemForm: FormGroup;
   private subscriptions: Subscription[] = [];
-  constructor(private fb: FormBuilder, private menuEditorService: MenuEditorService) { }
+  categories: Observable<CategoryDataModel[]>;
+
+  constructor(private fb: FormBuilder,
+              private menuEditorService: MenuEditorService,
+              private categoryService: CategoryService) { }
 
   ngOnInit() {
-    let loadedSubs = this.menuEditorService.dataLoaded.subscribe(state=> {
+    this.categories = this.categoryService.list();
+    let loadedSubs = this.menuEditorService.onDataLoaded.subscribe(state=> {
       if (state) {
         this.initForm();
       }
     });
 
-    let changeSubs = this.menuEditorService.changeItem.subscribe(state=> {
+    let changeSubs = this.menuEditorService.onChangeItem.subscribe(state=> {
       if (state) {
         this.initForm();
       }
@@ -36,6 +43,7 @@ export class MenuItemEditorComponent implements OnInit, OnDestroy {
       title: `${menuData[this.menuEditorService.selectedItemIndex].name.title}`,
       link: `${menuData[this.menuEditorService.selectedItemIndex].name.link}`,
       icon: `${menuData[this.menuEditorService.selectedItemIndex].icon}`,
+      category: menuData[this.menuEditorService.selectedItemIndex].name.params['category'] || 0,
       submenu: menuData[this.menuEditorService.selectedItemIndex].submenu.length > 0
     });
     this.menuEditorService.isSubmenuExist = this.isSubmenuExist;
@@ -50,6 +58,7 @@ export class MenuItemEditorComponent implements OnInit, OnDestroy {
     const index = this.menuEditorService.selectedItemIndex;
     this.menuEditorService.menuData[index].name.title = this.menuItemForm.get('title').value;
     this.menuEditorService.menuData[index].name.link = this.menuItemForm.get('link').value;
+    this.menuEditorService.menuData[index].name.params['category'] = this.menuItemForm.get('category').value;
     this.menuEditorService.menuData[index].icon = this.menuItemForm.get('icon').value;
     if (!this.menuItemForm.get('submenu').value) {
       this.menuEditorService.menuData[index].submenu = [];

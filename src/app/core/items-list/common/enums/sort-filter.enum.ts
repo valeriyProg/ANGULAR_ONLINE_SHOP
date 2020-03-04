@@ -1,7 +1,7 @@
 export enum SortFilterEnum {
-  DEFAULT,
-  NAME,
-  PRICE,
-  RATE,
-  SIZE
+  DEFAULT = 'name',
+  NAME = 'name',
+  PRICE = 'price',
+  RATE = 'rate',
+  SIZE = 'size'
 }

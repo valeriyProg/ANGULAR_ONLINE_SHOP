@@ -7,8 +7,6 @@ import {ActivatedRoute} from "@angular/router";
 import {ItemListService} from "../common/services/item-list.service";
 import CategoryDataModel from "../../../modules/category/common/models/category-data.model";
 import {HttpClient} from "@angular/common/http";
-import {SortFilterEnum} from "../common/enums/sort-filter.enum";
-import {SortTypeEnumMode} from "../common/enums/sort-type.enum.mode";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -46,13 +44,13 @@ export class ItemListComponent implements OnInit, OnDestroy {
           this.productService.getList(this.params).subscribe(items => {
             this.data = items;
 
-            let filterSubs = this.itemListService.filterSelected.subscribe(value => {
+            let filterSubs = this.itemListService.onFilterSelect.subscribe(value => {
               this.isDataLoading = true;
               this.loadProductList();
             });
 
 
-            let countSubs = this.itemListService.selectedCountItem.subscribe(value => {
+            let countSubs = this.itemListService.onSelectCountItem.subscribe(value => {
               this.isDataLoading = true;
               this.params.count = value;
               this.loadProductList();

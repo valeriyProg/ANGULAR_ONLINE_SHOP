@@ -26,11 +26,13 @@ export class ProductToolsComponent implements OnInit, OnDestroy {
     });
     this.subscriptions.push(subs);
   }
+
   initElement(id:string) {
     this.productService.get(id).subscribe(data=> {
       this.loadedData = data;
     });
   }
+
   edited() {
   //  TODO: NOT REALIZED YET...
   }

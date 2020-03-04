@@ -46,7 +46,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
 
     this.initForm();
 
-    let requestedSubs = this.addToolsService.apiRequested.subscribe(value=> {
+    let requestedSubs = this.addToolsService.onApiRequested.subscribe(value=> {
       this.promoList = this.promoService.list();
       this.brands = this.brandService.list();
       this.packType = this.packService.list();
@@ -80,7 +80,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
   submit() {
     const data = this.formDataService.formGroupToFormData(this.addForm);
     this.productService.add(data).subscribe(res=> {
-      this.addToolsService.apiRequested.next(null);
+      this.addToolsService.onApiRequested.next(null);
     });
   }
 

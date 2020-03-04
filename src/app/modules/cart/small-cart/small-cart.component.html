@@ -6,14 +6,14 @@
         <div class="product-item row space-between">
           <!-- PRODUCT IMG -->
           <div class="column" *ngIf="item.brand | async as brand">
-            <a [routerLink]="['/shop-page/product', item.id]" routerLinkActive="$router_link-active$" class="product-img" [title]="brand.name + ' ' + item.name.title" (click)="$event.preventDefault();">
+            <a [routerLink]="['/shop/product', item.id]" routerLinkActive="$router_link-active$" class="product-img" [title]="brand.name + ' ' + item.name.title" (click)="$event.preventDefault();">
               <img [src]="item.screen | serverImage" alt="img">
             </a>
           </div>
           <!-- PRODUCT NAME -->
           <div class="column space-between" *ngIf="this.cartService.storedItems[i].count">
             <div class="top" >
-              <a [routerLink]="['/shop-page/product', item.id]" routerLinkActive="$router_link-active$" class="name-link" >
+              <a [routerLink]="['/shop/product', item.id]" routerLinkActive="$router_link-active$" class="name-link" >
                 {{ item.name.title}}
               </a>
             </div>
@@ -50,8 +50,8 @@
         </div>
         <!--   CART NAVIGATION CONTROLS   -->
         <div class="controls row space-between">
-          <a [routerLink]="['/shop-page/cart']" routerLinkActive="$router_link-active$" class="add-to-cart-button" (click)="navigated.emit(true)">View Cart</a>
-          <a [routerLink]="['/shop-page/checkout']" routerLinkActive="$router_link-active$" class="add-to-cart-button" (click)="navigated.emit(true)">Checkout</a>
+          <a [routerLink]="['/shop/cart']" routerLinkActive="$router_link-active$" class="add-to-cart-button" (click)="navigated.emit(true)">View Cart</a>
+          <a [routerLink]="['/shop/checkout']" routerLinkActive="$router_link-active$" class="add-to-cart-button" (click)="navigated.emit(true)">Checkout</a>
         </div>
       </li>
     </ul>

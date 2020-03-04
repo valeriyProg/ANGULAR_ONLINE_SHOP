@@ -1,6 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CartService} from "../common/services/cart.service";
 import {Subscription} from "rxjs";
+import {ModalService} from "../common/services/modal.service";
+import CartActionModel from "../common/models/cart-action.model";
+import {CartActionsEnum} from "../common/enums/cart-actions.enum";
 
 @Component({
   selector: 'app-cart-modal-message',
@@ -8,27 +11,35 @@ import {Subscription} from "rxjs";
   styleUrls: ['./cart-modal-message.component.scss']
 })
 export class CartModalMessageComponent implements OnInit, OnDestroy {
+  @Input()
   fade = false;
   display: boolean = false;
+  action: CartActionModel;
+  cartActionsEnum = CartActionsEnum;
   private subscriptions: Subscription[] = [];
 
-  constructor(private cartService: CartService) {  }
+  constructor(private cartService: CartService,
+              private modalService: ModalService) {  }
 
   ngOnInit() {
-    let changeSubs = this.cartService.onChangeCartItems.subscribe(value => {
-      if (value) {
-        this.display = true;
-        this.fade = true;
-        setTimeout(() => {
-          this.fade = false;
-        }, 2000);
-        setTimeout(() => {
-          this.display = false;
-        }, 3000);
+    let cartAction = this.modalService.onCartAction.subscribe(value => {
+      if (value !== null) {
+        this.action = value;
+        this.showModal();
       }
     });
+    this.subscriptions.push(cartAction);
+  }
 
-    this.subscriptions.push(changeSubs);
+  private showModal() {
+    this.display = true;
+    this.fade = true;
+    setTimeout(() => {
+      this.fade = false;
+    }, 2000);
+    setTimeout(() => {
+      this.display = false;
+    }, 3000);
   }
 
   ngOnDestroy(): void {

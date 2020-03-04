@@ -1,6 +1,6 @@
 .menu-item-editor {
   min-width: 200px;
-  max-height: 350px;
+  max-height: 400px;
   padding: 15px 15px;
   margin-right: 20px;
   background: #fcf9f7;
@@ -18,4 +18,8 @@
     display: block;
     margin: 10px auto;
   }
+}
+
+.link-name-input {
+  width: 250px;
 }

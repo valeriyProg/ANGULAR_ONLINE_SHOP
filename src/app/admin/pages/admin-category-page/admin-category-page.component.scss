@@ -1,0 +1,14 @@
+.product-add-layout {
+  display: block;
+  width: 500px;
+  margin-right: 48px;
+}
+
+.category-item {
+  display: block;
+  margin: 15px 0;
+
+  &:not(:first-child) {
+    margin: 15px 15px 15px 0;
+  }
+}

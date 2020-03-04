@@ -33,7 +33,7 @@
         <div *ngIf="data.type === bannerTypeEnum.ShopBy" class="banner">
           <h2>{{ data.title }}</h2>
         </div>
-        <a href="" class="banner-btn">Shop Now</a>
+        <a [routerLink]="['/shop']" [queryParams]=" {category: data.id}" routerLinkActive="$router_link-active$" class="banner-btn">Shop Now</a>
       </div>
     </div>
   </div>

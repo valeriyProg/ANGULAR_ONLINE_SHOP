@@ -53,8 +53,8 @@ export class ItemListService {
   selectedFilter: SortNavModel = this.sortNav[0];
   isCountPageListShow = false;
   isFilterListShow = false;
-  selectedCountItem: BehaviorSubject<number> = new BehaviorSubject<number>(8);
-  filterSelected: BehaviorSubject<null> = new BehaviorSubject<null>(null);
+  onSelectCountItem: BehaviorSubject<number> = new BehaviorSubject<number>(8);
+  onFilterSelect: BehaviorSubject<null> = new BehaviorSubject<null>(null);
 
   constructor() { }
 
@@ -62,13 +62,13 @@ export class ItemListService {
     e.preventDefault();
     this.selectedFilter = filter;
     this.isFilterListShow = false;
-    this.filterSelected.next(null);
+    this.onFilterSelect.next(null);
   }
 
   selectCountPageFilter(e: Event, value: number) {
     e.preventDefault();
     this.isCountPageListShow = false;
     this.selectedCountIndex = value;
-    this.selectedCountItem.next(this.itemsCountToShow[value]);
+    this.onSelectCountItem.next(this.itemsCountToShow[value]);
   }
 }

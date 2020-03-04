@@ -5,7 +5,7 @@ import CategoryMenuItemModel from "../models/category-menu-item.model";
 
 @Injectable()
 export class CategoryMenuService {
-  uploadListSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  onUploadList: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +22,7 @@ export class CategoryMenuService {
   }
 
   uploadMenu(): void {
-    this.uploadListSubject.next(true);
+    this.onUploadList.next(true);
   }
 
   updateList<R>(data:CategoryMenuItemModel[]): Observable<HttpEvent<R>> {

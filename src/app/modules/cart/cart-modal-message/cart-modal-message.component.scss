@@ -7,9 +7,20 @@
   padding: 10px 0;
   opacity: 0;
   color: #ffffff;
-  background: #fd9148;
   z-index: 2313;
   transition: opacity 1s ease-in-out;
+}
+
+.item-add {
+  background: #fd9148;
+}
+
+.item-removed {
+  background: red;
+}
+
+.item-updated {
+  background: #00aaff;
 }
 
 .fade-in {

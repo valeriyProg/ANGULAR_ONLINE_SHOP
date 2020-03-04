@@ -15,7 +15,7 @@ export class SubmenuListPanelComponent implements OnInit, OnDestroy {
   constructor(private menuEditorService: MenuEditorService) { }
 
   ngOnInit() {
-    let loadedSubs = this.menuEditorService.dataLoaded.subscribe(state=> {
+    let loadedSubs = this.menuEditorService.onDataLoaded.subscribe(state=> {
       if (state) {
         this.menuData = this.menuEditorService.menuData;
       }
@@ -27,7 +27,7 @@ export class SubmenuListPanelComponent implements OnInit, OnDestroy {
   showSubmenuEditForm(e: Event, index:number): void {
     e.preventDefault();
     this.menuEditorService.showSubmenuEditForm(index);
-    this.menuEditorService.openSubmenuEditForm.next(true);
+    this.menuEditorService.onOpenSubmenuEditForm.next(true);
   }
 
   ngOnDestroy(): void {

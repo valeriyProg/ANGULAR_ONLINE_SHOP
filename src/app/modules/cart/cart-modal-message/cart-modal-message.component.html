@@ -1,5 +1,14 @@
-<div class="cart-modal-message" *ngIf="display"  [ngClass]="{'fade-in': fade }">
-  <div class="container">
-    <span>Success: You have added Chocolate Truffles to your shopping cart!</span>
+<div class="cart-modal-message" *ngIf="display && action"
+     [ngClass]="{'fade-in': fade, 'item-add': action.action === cartActionsEnum.ADD,
+      'item-removed': action.action === cartActionsEnum.REMOVE,
+       'item-updated': action.action === cartActionsEnum.UPDATE }">
+  <div class="container" *ngIf="action.action === cartActionsEnum.ADD">
+    <span>Success: You have added ID:{{ action.name }} product to your shopping cart!</span>
+  </div>
+  <div class="container" *ngIf="action.action === cartActionsEnum.REMOVE">
+    <span>Success: You have removed ID:{{ action.name }} product from your shopping cart!</span>
+  </div>
+  <div class="container" *ngIf="action.action === cartActionsEnum.UPDATE">
+    <span>Success: Product was updated ID:{{ action.name }} product  in your shopping cart!</span>
   </div>
 </div>

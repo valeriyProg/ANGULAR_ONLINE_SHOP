@@ -28,7 +28,7 @@ export class ProductListTableComponent implements OnInit, OnDestroy {
       this.dataSource.paginator = this.paginator;
     });
 
-    let requestedSubs = this.addToolsService.apiRequested.subscribe(value => {
+    let requestedSubs = this.addToolsService.onApiRequested.subscribe(value => {
       this.productService.getList().subscribe(data=> {
         this.productList = data;
         this.dataSource.data = data;

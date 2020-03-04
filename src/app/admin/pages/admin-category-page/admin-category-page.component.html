@@ -1,0 +1,14 @@
+<div class="row">
+  <app-edit-layout class="product-add-layout">
+    <p class="title">Set product info and save to base</p>
+    <!--    ADD CATEGORY COMPONENT    -->
+    <app-add-category (categoryAdded)="loadItems()"></app-add-category>
+  </app-edit-layout>
+</div>
+<div class="row">
+  <div class="row  wrap">
+    <!--   CATEGORIES LIST  -->
+    <app-category-item *ngFor="let item of categories" [categoryItem]="item" class="category-item"></app-category-item>
+  </div>
+</div>
+

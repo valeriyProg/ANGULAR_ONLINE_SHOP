@@ -28,7 +28,7 @@ export class PromoListComponent implements OnInit, OnDestroy {
       this.dataSource.paginator = this.paginator;
     });
 
-    let requestedSubs =  this.addToolsService.apiRequested.subscribe(value => {
+    let requestedSubs =  this.addToolsService.onApiRequested.subscribe(value => {
       this.promoService.list().subscribe(data=> {
         this.bannerList = data;
         this.dataSource.data = data;
@@ -40,7 +40,7 @@ export class PromoListComponent implements OnInit, OnDestroy {
 
   deleteItem(id:string) {
     this.promoService.delete(id).subscribe(res => {
-      this.addToolsService.apiRequested.next(null);
+      this.addToolsService.onApiRequested.next(null);
     });
   }
 

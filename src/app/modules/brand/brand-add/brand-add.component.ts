@@ -30,7 +30,7 @@ export class BrandAddComponent implements OnInit {
   submit(): void {
     const data = this.formDataService.formGroupToFormData(this.addForm);
     this.brandService.add(data).subscribe( resp => {
-      this.addToolsService.apiRequested.next(null);
+      this.addToolsService.onApiRequested.next(null);
     });
   }
 }

@@ -33,6 +33,8 @@ import {AddToolsService} from "./common/services/add-tools.service";
 import { OrderListComponent } from './components/order-list/order-list.component';
 import {CategoryMenuModule} from "../core/category-menu/category-menu.module";
 import {PromoModule} from "../modules/promo/promo.module";
+import { AdminCategoryPageComponent } from './pages/admin-category-page/admin-category-page.component';
+import {CategoryModule} from "../modules/category/category.module";
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import {PromoModule} from "../modules/promo/promo.module";
     EditLayoutComponent,
     AddToolsComponent,
     MenuComponent,
-    OrderListComponent
+    OrderListComponent,
+    AdminCategoryPageComponent
   ],
   providers: [
     AsideBarService,
@@ -75,6 +78,7 @@ import {PromoModule} from "../modules/promo/promo.module";
     CategoryMenuModule,
     RouterModule,
     AdminRoutingModule,
+    CategoryModule,
   ],
   exports: [
     DefaultLayoutComponent,

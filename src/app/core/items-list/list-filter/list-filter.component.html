@@ -33,7 +33,7 @@
       </div>
     </div>
     <!--    FILTER NAV-LIST BLOCK   -->
-    <div class="filter-elem filter-list-elem">
+    <div class="filter-elem filter-list-elem" (mouseenter)="onListHover = true" (mouseleave)="onListHover = false">
       <div class="filter-list-wrapper">
         <label for="filter"></label>
         <!--     SELECTED FILTER   -->
@@ -57,7 +57,7 @@
       </div>
     </div>
     <!--   COUNT PAGE TO DISPLAY BLOCK-->
-    <div class="filter-elem">
+    <div class="filter-elem"  (mouseenter)="onListHover = true" (mouseleave)="onListHover = false">
       <label for="count-page" class="show-label">Show:</label>
       <!--    SELECTED COUNT PAGE   -->
       <div class="count-page row">

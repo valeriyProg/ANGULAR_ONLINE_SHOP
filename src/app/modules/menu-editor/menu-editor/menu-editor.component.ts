@@ -20,7 +20,7 @@ export class MenuEditorComponent {
     this.categoryService.updateList(this.menuEditorService.menuData).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
         this.uploading = false;
-        this.categoryService.uploadListSubject.next(true);
+        this.categoryService.onUploadList.next(true);
       }
     });
   }
@@ -30,7 +30,7 @@ export class MenuEditorComponent {
     this.categoryService.getMenu().subscribe(data => {
       this.menuEditorService.menuData = data;
       this.restoring = false;
-      this.categoryService.uploadListSubject.next(true);
+      this.categoryService.onUploadList.next(true);
     })
   }
 }

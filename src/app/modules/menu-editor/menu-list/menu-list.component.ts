@@ -18,7 +18,7 @@ export class MenuListComponent implements OnInit {
     this.categoryService.getMenu().subscribe( item => {
       this.menuEditorService.menuData = item;
       this.menuData = this.menuEditorService.menuData;
-      this.menuEditorService.dataLoaded.next(true);
+      this.menuEditorService.onDataLoaded.next(true);
     });
   }
 }

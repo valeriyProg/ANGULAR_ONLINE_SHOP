@@ -9,6 +9,7 @@ import CouponModel from "../common/models/coupon.model";
 })
 export class CouponPanelItemComponent {
   @Input() expanded: boolean = false;
+  @Input() type: string;
   @Output() applied: EventEmitter<CouponModel> = new EventEmitter<CouponModel>();
   validMessage: string;
   confirmed: boolean;

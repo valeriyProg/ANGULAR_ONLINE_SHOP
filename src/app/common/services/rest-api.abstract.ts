@@ -14,7 +14,7 @@ export default abstract class RestApiAbstract<ElementType> {
     return this.http.get<ElementType>(`${this.prefix}/${this.path}/${id}`);
   }
 
-  add(data: FormData | ElementType): Observable<void> {
+  add(data: FormData | ElementType | {}): Observable<void> {
     return this.http.post<void>(`${this.prefix}/${this.path}`, data);
   }
 

@@ -4,7 +4,7 @@ import {ShopProductComponent} from "../pages/shop-product-page/shop-product.comp
 
 const routes: Routes = [
   {
-    path: 'shop-page/product/:id', component: ShopProductComponent, data: { animation: 'ShopHomePage' }
+    path: 'shop/product/:id', component: ShopProductComponent, data: { animation: 'ShopProduct' }
   }
 ];
 

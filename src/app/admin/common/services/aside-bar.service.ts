@@ -21,6 +21,7 @@ export class AsideBarService {
         {title: 'Menu', link: '/admin/components/menu-editor'},
         {title: 'Edit Component', link: '/admin/components/product-editor'},
         {title: 'Add Component', link: '/admin/components/product-add'},
+        {title: 'Categories', link: '/admin/components/categories'}
       ] },
     { id: 2,
       title: 'Order List', link: '/admin/order-list',
@@ -51,6 +52,7 @@ export class AsideBarService {
     if (target.tagName !== 'a' && target.tagName !== 'A') {
       return;
     }
+
     if (this.collapseMenu) {
       this.collapseMenu = false;
     }

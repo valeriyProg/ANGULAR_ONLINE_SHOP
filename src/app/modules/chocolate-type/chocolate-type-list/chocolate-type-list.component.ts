@@ -28,7 +28,7 @@ export class ChocolateTypeListComponent implements OnInit, OnDestroy {
       this.dataSource.paginator = this.paginator;
     });
 
-    let requestedSubs = this.addToolsService.apiRequested.subscribe(value => {
+    let requestedSubs = this.addToolsService.onApiRequested.subscribe(value => {
       this.chocolateTypeService.list().subscribe(data=> {
         this.chocolateTypeList = data;
         this.dataSource.data = data;
@@ -40,7 +40,7 @@ export class ChocolateTypeListComponent implements OnInit, OnDestroy {
 
   deleteItem(id:string) {
     this.chocolateTypeService.delete(id).subscribe(res => {
-      this.addToolsService.apiRequested.next(null);
+      this.addToolsService.onApiRequested.next(null);
     });
   }
 

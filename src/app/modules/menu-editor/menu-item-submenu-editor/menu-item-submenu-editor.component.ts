@@ -16,7 +16,7 @@ export class MenuItemSubmenuEditorComponent implements OnInit, OnDestroy {
   constructor(private menuEditorService: MenuEditorService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    let openSubs = this.menuEditorService.openSubmenuEditForm.subscribe(state=> {
+    let openSubs = this.menuEditorService.onOpenSubmenuEditForm.subscribe(state=> {
       if (state) {
         this.menuData = this.menuEditorService.menuData;
         this.setDefaultSubmenuData();
