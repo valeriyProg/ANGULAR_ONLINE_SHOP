@@ -33,12 +33,12 @@
       </div>
     </div>
     <!--    FILTER NAV-LIST BLOCK   -->
-    <div class="filter-elem filter-list-elem" (mouseenter)="onListHover = true" (mouseleave)="onListHover = false">
+    <div class="filter-elem filter-list-elem" (mouseenter)="listService.onListHover = true" (mouseleave)="listService.onListHover = false">
       <div class="filter-list-wrapper">
         <label for="filter"></label>
         <!--     SELECTED FILTER   -->
         <div class="filter-list-inner row space-between">
-          <a href="#" class="filter-title" (click)="$event.preventDefault(); listService.isFilterListShow = true">
+          <a href="#" class="filter-title" (click)="$event.preventDefault();  listService.toggleSortList($event); this.tempHandler();">
             {{ listService.selectedFilter.name }}
           </a>
           <a href="#" (click)="$event.preventDefault()" class="filter-btn"><div class="list-control"><i></i></div></a>
@@ -57,11 +57,11 @@
       </div>
     </div>
     <!--   COUNT PAGE TO DISPLAY BLOCK-->
-    <div class="filter-elem"  (mouseenter)="onListHover = true" (mouseleave)="onListHover = false">
+    <div class="filter-elem"  (mouseenter)="listService.onListHover = true" (mouseleave)="listService.onListHover = false">
       <label for="count-page" class="show-label">Show:</label>
       <!--    SELECTED COUNT PAGE   -->
       <div class="count-page row">
-        <a href="#" class="count-page-link" (click)="$event.preventDefault(); listService.isCountPageListShow = true">
+        <a href="#" class="count-page-link" (click)="$event.preventDefault();  listService.toggleCountPageList($event); this.tempHandler();">
           {{ listService.itemsCountToShow[listService.selectedCountIndex] }}
         </a>
         <a href="#" class="filter-btn" (click)="$event.preventDefault(); listService.isCountPageListShow = true">

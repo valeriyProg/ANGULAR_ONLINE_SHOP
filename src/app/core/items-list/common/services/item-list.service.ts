@@ -53,6 +53,8 @@ export class ItemListService {
   selectedFilter: SortNavModel = this.sortNav[0];
   isCountPageListShow = false;
   isFilterListShow = false;
+  onListHover: boolean = false;
+
   onSelectCountItem: BehaviorSubject<number> = new BehaviorSubject<number>(8);
   onFilterSelect: BehaviorSubject<null> = new BehaviorSubject<null>(null);
 
@@ -70,5 +72,13 @@ export class ItemListService {
     this.isCountPageListShow = false;
     this.selectedCountIndex = value;
     this.onSelectCountItem.next(this.itemsCountToShow[value]);
+  }
+
+  toggleSortList(e: Event) {
+    this.isFilterListShow = !this.isFilterListShow;
+  }
+
+  toggleCountPageList(e: Event) {
+    this.isCountPageListShow = !this.isCountPageListShow;
   }
 }
