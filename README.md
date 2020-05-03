@@ -10,6 +10,8 @@ __Status__: _At Work_
 
 ## Admin preview
 
+![Admin Panel Preview](https://github.com/valeriyProg/ANGULAR_ONLINE_SHOP/blob/master/Admin-preview%20.gif)
+
 ## Project Description
 
 ## Development server
