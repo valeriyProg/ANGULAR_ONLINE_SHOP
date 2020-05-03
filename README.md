@@ -19,6 +19,10 @@ ___THIS PROJECT NOT FINISHED AND CONTAINS SOME BUGS___
 The reason i started this project  - i want to understand all stages of development website. I choose online shop - this type of website 
 very popular and can be complex enough. 
 
+__In my nearest planes__ - realization search-bar.
+
+__Next steps__ create account, logging, finish product coupons.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
