@@ -4,6 +4,8 @@ This project was developed with available design template (Open Cart) https://ww
 
 __Status__: _At Work_
 
+___THIS PROJECT NOT FINISHED AND CONTAINS SOME BUGS___
+
 ## Client preview
 
 ![Client Preview](https://github.com/valeriyProg/ANGULAR_ONLINE_SHOP/blob/master/Client-Preview.gif)
@@ -13,6 +15,9 @@ __Status__: _At Work_
 ![Admin Panel Preview](https://github.com/valeriyProg/ANGULAR_ONLINE_SHOP/blob/master/Admin-preview%20.gif)
 
 ## Project Description
+
+The reason i started this project  - i want to understand all stages of development website. I choose online shop - this type of website 
+very popular and can be complex enough. 
 
 ## Development server
 
