@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {CartService} from "./cart.service";
+import {CouponService} from "./coupon.service";
 
 @Injectable()
 export class CalculationService {
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private couponService: CouponService) { }
 
   get priceWithoutCalculating(): number {
     let price = 0;
@@ -23,9 +24,9 @@ export class CalculationService {
   }
 
   get calculatedFullPrice(): number {
-    if (this.cartService.coupons.length) {
+    if (this.couponService.userCoupons.length) {
       let price = this.priceWithoutCalculating;
-      this.cartService.coupons.forEach(value => {
+      this.couponService.userCoupons.forEach(value => {
         price = price - (value.discount * price);
       });
       return  price + this.calculatedVat + this.calculatedEcoTax;

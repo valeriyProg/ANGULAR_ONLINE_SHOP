@@ -4,8 +4,6 @@ import LocalstorageCartModel from "../../../product/common/models/localstorage-c
 import {BehaviorSubject, fromEvent} from "rxjs";
 import ProductFullModel from "../../../product/common/models/product-full.model";
 import ProductContract from "../../../product/common/contracts/product.contract";
-import CouponModel from "../models/coupon.model";
-import CouponStatusMessageModel from "../models/coupon-status-message.model";
 import {ModalService} from "./modal.service";
 import {CartActionsEnum} from "../enums/cart-actions.enum";
 import {CouponService} from "./coupon.service";
@@ -18,8 +16,6 @@ export class CartService {
   loadedProducts: ProductFullModel[];
   ecoTaxValue = 0.02;
   vatValue = 0.2;
-  coupons: CouponModel[];
-  private productsPrice = 0;
 
   constructor(private localstorageService: LocalstorageService,
               private productService: ProductContract,
@@ -28,7 +24,6 @@ export class CartService {
 
     this.storedItems = this.getItems() || [];
     this.loadProducts();
-    this.coupons = this.couponService.userCoupons;
 
     fromEvent(window, 'storage').subscribe(event =>{
       this.storedItems = this.getItems();
@@ -106,13 +101,8 @@ export class CartService {
     this.onChangeCartItems.next(true);
     this.modalService.onCartAction.next({ name: id, action: CartActionsEnum.REMOVE});
 
-    this.clearCoupon();
-  }
-
-  clearCoupon() {
     if (this.storedItems.length === 0) {
-      this.coupons = [];
-      this.couponService.userCoupons = [];
+      this.couponService.clearCoupon();
     }
   }
 

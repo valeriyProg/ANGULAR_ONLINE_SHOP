@@ -49,6 +49,13 @@ export class CouponService {
     };
   }
 
+  clearCoupon() {
+    this.userCoupons = [];
+    this.localstorageService.set('coupons', []);
+
+
+  }
+
   getStoredCoupons(): CouponModel[] {
     return JSON.parse(this.localstorageService.get('coupons'));
   }
