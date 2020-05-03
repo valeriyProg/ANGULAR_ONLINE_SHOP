@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MenuEditorComponent} from './menu-editor/menu-editor.component';
+import {MenuEditorComponent} from './editor-container/menu-editor.component';
 import {MenuListComponent} from './menu-list/menu-list.component';
 import {ButtonsModule} from "../../ui/buttons/buttons.module";
 import {MenuItemEditorComponent} from './menu-item-editor/menu-item-editor.component';

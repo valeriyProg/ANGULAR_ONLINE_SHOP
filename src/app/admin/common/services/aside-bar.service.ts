@@ -18,7 +18,7 @@ export class AsideBarService {
         viewBox: '0 0 512 512'
       },
       submenu: [
-        {title: 'Menu', link: '/admin/components/menu-editor'},
+        {title: 'Menu', link: '/admin/components/editor-container'},
         {title: 'Edit Component', link: '/admin/components/product-editor'},
         {title: 'Add Component', link: '/admin/components/product-add'},
         {title: 'Categories', link: '/admin/components/categories'}

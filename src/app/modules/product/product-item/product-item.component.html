@@ -19,7 +19,7 @@
   </div>
   <!--  PRODUCT NAME  -->
   <div class="product-name">
-    <a [href]="product.name.link" class="product-name-link">
+    <a [routerLink]="['/shop/product/', product.id]" routerLinkActive="$router_link-active$" class="product-name-link">
      {{ product.name.title }}
     </a>
   </div>

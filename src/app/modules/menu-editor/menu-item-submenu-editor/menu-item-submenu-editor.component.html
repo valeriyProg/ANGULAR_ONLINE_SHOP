@@ -2,14 +2,6 @@
   <h2>Edit Submenu</h2>
   <!-- SUBMENU EDIT FORM -->
   <form [formGroup]="submenuForm" id="create-submenu-form" class="create-form" (ngSubmit)="submit()">
-    <!--  SUBMENU ITEM TITLE NAME -->
-    <div class="submenu-item submenu-title">
-      <mat-form-field class="link-name-input">
-        <label>
-          <input matInput [formControlName]="'title'" placeholder="Submenu Title Name">
-        </label>
-      </mat-form-field>
-    </div>
     <!--  SUBMENU LIST -->
     <ul class="submenu-list" [formArrayName]="'submenu'" *ngIf="submenu.controls.length > 0">
       <li class="submenu-item row"  *ngFor="let control of submenu.controls; index as i">

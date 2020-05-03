@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import CouponModel from "../models/coupon.model";
 import CouponStatusMessageModel from "../models/coupon-status-message.model";
+import {LocalstorageService} from "../../../product/common/services/localstorage.service";
 
 @Injectable( )
 export class CouponService {
@@ -19,7 +20,9 @@ export class CouponService {
   }];
   userCoupons: CouponModel[] = [];
 
-  constructor() { }
+  constructor(private localstorageService: LocalstorageService) {
+      this.userCoupons = this.getStoredCoupons() || [];
+  }
 
   setCoupon(id: string): CouponStatusMessageModel {
     if (this.isCouponExist(id) && this.isCouponAlreadyApplied(id)) {
@@ -38,11 +41,16 @@ export class CouponService {
 
     let index = this.coupons.findIndex(value => value.id === id);
     this.userCoupons.push(this.coupons[index]);
+    this.localstorageService.set('coupons', this.userCoupons);
 
     return {
       status: true,
       message: 'Coupon successful apply'
     };
+  }
+
+  getStoredCoupons(): CouponModel[] {
+    return JSON.parse(this.localstorageService.get('coupons'));
   }
 
   isCouponExist(id: string): boolean {

@@ -41,7 +41,6 @@ export class MenuItemSubmenuEditorComponent implements OnInit, OnDestroy {
       );
     });
     this.submenuForm = this.fb.group({
-      title: `${this.menuEditorService.tempSubmenu.title.title}`,
       submenu: this.fb.array(subMenuItemsControls)
     });
   }
@@ -63,7 +62,6 @@ export class MenuItemSubmenuEditorComponent implements OnInit, OnDestroy {
     const selectedItemIndex = this.menuEditorService.selectedItemIndex;
     const selectedSubmenuIndex = this.menuEditorService.selectedItemSubmenuIndex;
     const confirmedSubmenuData = this.submenu.controls;
-    this.menuEditorService.tempSubmenu.title.title = this.submenuForm.get('title').value;
     this.menuEditorService.tempSubmenu.items = [];
     confirmedSubmenuData.forEach((item, index) => {
       if (index % 2 === 0) {

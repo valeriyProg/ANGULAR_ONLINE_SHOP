@@ -100,10 +100,20 @@ export class CartService {
   deleteItem(id: string) {
     const index = this.storedItems.findIndex(item => item.id === id);
     this.storedItems.splice(index, 1);
+
     this.loadProducts();
     this.localstorageService.set(this.key, this.storedItems);
     this.onChangeCartItems.next(true);
     this.modalService.onCartAction.next({ name: id, action: CartActionsEnum.REMOVE});
+
+    this.clearCoupon();
+  }
+
+  clearCoupon() {
+    if (this.storedItems.length === 0) {
+      this.coupons = [];
+      this.couponService.userCoupons = [];
+    }
   }
 
   get itemsCount(): number {
@@ -111,6 +121,7 @@ export class CartService {
     this.storedItems.forEach( item => {
       count += item.count;
     });
+
     return count;
   }
 }

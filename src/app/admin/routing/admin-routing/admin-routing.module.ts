@@ -21,7 +21,7 @@ const adminRoutes: Routes = [
       {
         path: 'components', component: AdminComponentsComponent, data: { animation: 'AdminComponents' },
         children: [
-          { path: 'menu-editor', component: MenuComponent, data: { animation: 'AdminMenuEditor' } },
+          { path: 'editor-container', component: MenuComponent, data: { animation: 'AdminMenuEditor' } },
           { path: 'product-editor', component: ProductToolsComponent, data: { animation: 'AdminProductEditor' } },
           { path: 'product-editor/:id', component: ProductToolsComponent, data: { animation: 'AdminProductEditor' } },
           { path: 'product-add', component: AddToolsComponent, data: { animation: 'AdminProductAdd' } },
