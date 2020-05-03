@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Client preview
 
-
+![Client Preview](https://github.com/valeriyProg/ANGULAR_ONLINE_SHOP/blob/master/Client-Preview.gif)
 
 ## Development server
 
