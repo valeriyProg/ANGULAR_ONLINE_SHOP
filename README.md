@@ -1,6 +1,10 @@
-# Shop
+# Online Candy Shop on Angular 2+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+
+## Client preview
+
+
 
 ## Development server
 
