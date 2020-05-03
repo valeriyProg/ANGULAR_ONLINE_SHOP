@@ -6,6 +6,10 @@ This project was developed with available design layout (Open Cart) https://www.
 
 ![Client Preview](https://github.com/valeriyProg/ANGULAR_ONLINE_SHOP/blob/master/Client-Preview.gif)
 
+## Admin preview
+
+## Project Description
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
