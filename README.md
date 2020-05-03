@@ -1,6 +1,7 @@
 # Online Candy Shop on Angular 2+
 
 This project was developed with available design template (Open Cart) https://www.templatemonster.com/free-templates/sweetella-responsive-sweets-store-opencart-template-58576.html.
+__Status__: _At Work_
 
 ## Client preview
 
